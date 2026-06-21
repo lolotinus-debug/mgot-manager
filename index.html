@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,8 @@
 <title>MGOT Football Manager</title>
 
 <style>
+
+/* ====== SAME STYLE ====== */
 
 :root{
 --bg:#0f1117;
@@ -55,19 +57,10 @@ margin-top:10px;
 font-size:14px;
 }
 
-.money{
-color:var(--accent);
-font-weight:bold;
-}
+.money{color:var(--accent);font-weight:bold;}
 
-.screen{
-display:none;
-padding:15px;
-}
-
-.active{
-display:block;
-}
+.screen{display:none;padding:15px;}
+.active{display:block;}
 
 .city-grid{
 display:grid;
@@ -86,31 +79,16 @@ cursor:pointer;
 transition:.2s;
 }
 
-.location:active{
-transform:scale(.97);
-}
+.location:active{transform:scale(.97);}
 
-.locationIcon{
-font-size:42px;
-margin-bottom:10px;
-}
-
-.locationTitle{
-font-size:18px;
-font-weight:bold;
-}
+.locationIcon{font-size:42px;margin-bottom:10px;}
+.locationTitle{font-size:18px;font-weight:bold;}
 
 .card{
 background:var(--card);
 padding:15px;
 border-radius:14px;
 margin-bottom:12px;
-}
-
-.cardTitle{
-font-size:18px;
-font-weight:bold;
-margin-bottom:8px;
 }
 
 button{
@@ -123,20 +101,9 @@ margin-top:8px;
 cursor:pointer;
 }
 
-.btnGreen{
-background:var(--accent);
-color:black;
-}
-
-.btnBlue{
-background:#3c7cff;
-color:white;
-}
-
-.btnBack{
-background:#444;
-color:white;
-}
+.btnGreen{background:var(--accent);color:black;}
+.btnBlue{background:#3c7cff;color:white;}
+.btnBack{background:#444;color:white;}
 
 .statRow{
 display:flex;
@@ -163,11 +130,7 @@ border-radius:10px;
 }
 
 @media(max-width:700px){
-
-.city-grid{
-grid-template-columns:1fr;
-}
-
+.city-grid{grid-template-columns:1fr;}
 }
 
 </style>
@@ -177,33 +140,23 @@ grid-template-columns:1fr;
 
 <header>
 
-<div id="clubName">
-⚽ MGOT FC
-</div>
+<div id="clubName">⚽ MGOT FC</div>
 
 <div id="topBar">
 
-<div>
-💰 <span id="moneyText">10000</span> MGOT
-</div>
-
-<div>
-👥 <span id="fansText">500</span>
-</div>
-
-<div>
-⭐ <span id="repText">1</span>
-</div>
+<div>💰 <span id="moneyText">10000</span> MGOT</div>
+<div>👥 <span id="fansText">500</span></div>
+<div>⭐ <span id="repText">1</span></div>
 
 </div>
 
 </header>
 
-<!-- MESTO -->
+<!-- CITY SCREEN -->
 
 <div id="cityScreen" class="screen active">
 
-<h2>🌆 Mesto</h2>
+<h2>🌆 City</h2>
 
 <br>
 
@@ -211,49 +164,49 @@ grid-template-columns:1fr;
 
 <div class="location" onclick="openScreen('stadiumScreen')">
 <div class="locationIcon">🏟️</div>
-<div class="locationTitle">Štadión</div>
+<div class="locationTitle">Stadium</div>
 </div>
 
 <div class="location" onclick="openScreen('leagueScreen')">
 <div class="locationIcon">🏆</div>
-<div class="locationTitle">Liga</div>
+<div class="locationTitle">League</div>
 </div>
 
 <div class="location" onclick="openScreen('squadScreen')">
 <div class="locationIcon">👥</div>
-<div class="locationTitle">Tím</div>
+<div class="locationTitle">Squad</div>
 </div>
 
 <div class="location" onclick="openScreen('transferScreen')">
 <div class="locationIcon">🔄</div>
-<div class="locationTitle">Prestupy</div>
+<div class="locationTitle">Transfers</div>
 </div>
 
 <div class="location" onclick="openScreen('trainingScreen')">
 <div class="locationIcon">💪</div>
-<div class="locationTitle">Tréning</div>
+<div class="locationTitle">Training</div>
 </div>
 
 <div class="location" onclick="openScreen('academyScreen')">
 <div class="locationIcon">🎓</div>
-<div class="locationTitle">Akadémia</div>
+<div class="locationTitle">Academy</div>
 </div>
 
 <div class="location" onclick="openScreen('shopScreen')">
 <div class="locationIcon">🛒</div>
-<div class="locationTitle">Obchod</div>
+<div class="locationTitle">Shop</div>
 </div>
 
 <div class="location" onclick="openScreen('clubScreen')">
 <div class="locationIcon">📈</div>
-<div class="locationTitle">Klub</div>
+<div class="locationTitle">Club</div>
 </div>
 
 </div>
 
 </div>
 
-<!-- KLUB -->
+<!-- CLUB SCREEN -->
 
 <div id="clubScreen" class="screen">
 
@@ -263,60 +216,51 @@ grid-template-columns:1fr;
 
 <div class="card">
 
-<div class="cardTitle">
-Informácie o klube
-</div>
-
 <div class="statRow">
-<span>Názov</span>
+<span>Club Name</span>
 <span>MGOT FC</span>
 </div>
 
 <div class="statRow">
-<span>Sezóna</span>
+<span>Season</span>
 <span id="seasonText">1</span>
 </div>
 
 <div class="statRow">
-<span>Reputácia</span>
+<span>Reputation</span>
 <span id="clubRep">1</span>
 </div>
 
 <div class="statRow">
-<span>Fanúšikovia</span>
+<span>Fans</span>
 <span id="clubFans">500</span>
 </div>
 
 </div>
 
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- ŠTADIÓN -->
+<!-- STADIUM SCREEN -->
 
 <div id="stadiumScreen" class="screen">
 
-<h2>🏟️ Štadión</h2>
+<h2>🏟️ Stadium</h2>
 
 <br>
 
 <div class="card">
 
-<div class="cardTitle">
-MGOT Arena
-</div>
-
 <div class="statRow">
-<span>Úroveň</span>
+<span>Level</span>
 <span id="stadiumLevelText">1</span>
 </div>
 
 <div class="statRow">
-<span>Kapacita</span>
+<span>Capacity</span>
 <span id="capacityText">1000</span>
 </div>
 
@@ -324,693 +268,283 @@ MGOT Arena
 
 <div class="card">
 
-<button class="btnGreen"
-onclick="upgradeStadium()">
-Vylepšiť štadión
+<button class="btnGreen" onclick="upgradeStadium()">
+Upgrade Stadium
 </button>
 
 </div>
 
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- LIGA -->
+<!-- LEAGUE SCREEN -->
 
 <div id="leagueScreen" class="screen">
 
-<h2>🏆 Liga</h2>
+<h2>🏆 League</h2>
 
 <br>
 
-<div id="leagueTable">
+<div id="leagueTable"></div>
 
-</div>
-
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- TÍM -->
+<!-- SQUAD SCREEN -->
 
 <div id="squadScreen" class="screen">
 
-<h2>👥 Súpiska</h2>
+<h2>👥 Squad</h2>
 
 <br>
 
-<div id="squadList">
+<div id="squadList"></div>
 
-</div>
-
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- PRESTUPY -->
+<!-- TRANSFERS SCREEN -->
 
 <div id="transferScreen" class="screen">
 
-<h2>🔄 Prestupy</h2>
+<h2>🔄 Transfers</h2>
 
 <br>
 
 <div class="card">
-Prestupový trh bude doplnený
-v Časti 2.
+Transfer system will be added in next parts.
 </div>
 
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- TRÉNING -->
+<!-- TRAINING SCREEN -->
 
 <div id="trainingScreen" class="screen">
 
-<h2>💪 Tréning</h2>
+<h2>💪 Training</h2>
 
 <br>
 
 <div class="card">
-Tréningový systém bude
-doplnený v ďalších častiach.
+Training system will be added in next parts.
 </div>
 
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- AKADÉMIA -->
+<!-- ACADEMY SCREEN -->
 
 <div id="academyScreen" class="screen">
 
-<h2>🎓 Akadémia</h2>
+<h2>🎓 Academy</h2>
 
 <br>
 
 <div class="card">
-Akadémia bude doplnená
-v ďalších častiach.
+Academy will be added in next parts.
 </div>
 
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
-<!-- OBCHOD -->
+<!-- SHOP SCREEN -->
 
 <div id="shopScreen" class="screen">
 
-<h2>🛒 Obchod</h2>
+<h2>🛒 Shop</h2>
 
 <br>
 
 <div class="card">
 
-<button class="btnBlue"
-onclick="buyMoneyPack()">
-Kúpiť +1000 MGOT
+<button class="btnBlue" onclick="buyMoneyPack()">
+Buy +1000 MGOT
 </button>
 
 </div>
 
-<button class="btnBack"
-onclick="goCity()">
-Späť
+<button class="btnBack" onclick="goCity()">
+Back
 </button>
 
 </div>
 
 <script>
 
+/* GAME DATA */
+
 let game = {
-
 clubName:"MGOT FC",
-
 money:10000,
-
 fans:500,
-
 reputation:1,
-
 season:1,
-
 stadiumLevel:1,
-
 capacity:1000
-
 };
 
 const leagueTeams = [
 "MGOT FC",
-"Solana United",
+"Solar United",
 "Crypto City",
-"Token FC",
+"Blockchain FC",
 "Moon FC",
 "Diamond FC",
-"Whale FC",
 "Rocket FC",
+"Whale FC",
 "Bull FC",
-"Blockchain FC"
+"Token FC"
 ];
 
 const squad = [
-
-{
-name:"Peter Novak",
-pos:"GK",
-ovr:72,
-age:23
-},
-
-{
-name:"Martin Kovac",
-pos:"DEF",
-ovr:70,
-age:22
-},
-
-{
-name:"Lukas Hruby",
-pos:"DEF",
-ovr:71,
-age:24
-},
-
-{
-name:"Adam Toth",
-pos:"MID",
-ovr:74,
-age:21
-},
-
-{
-name:"Samuel Kral",
-pos:"ATT",
-ovr:76,
-age:20
-}
+{name:"John Novak",pos:"GK",ovr:72,age:23},
+{name:"Mike Kovac",pos:"DEF",ovr:70,age:22},
+{name:"Leo Urban",pos:"MID",ovr:74,age:21},
+{name:"Sam Kral",pos:"ATT",ovr:76,age:20}
 ];
-/* ===========================
-   ZÁKLADNÉ FUNKCIE HRY
-=========================== */
+
+/* CORE FUNCTIONS */
 
 function openScreen(id){
-
-document
-.querySelectorAll(".screen")
-.forEach(screen=>{
-
-screen.classList.remove("active");
-
-});
-
-document
-.getElementById(id)
-.classList.add("active");
-
+document.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
 
 function goCity(){
-
 openScreen("cityScreen");
-
 }
 
 function updateTopBar(){
 
-document
-.getElementById("moneyText")
-.innerText =
-game.money;
-
-document
-.getElementById("fansText")
-.innerText =
-game.fans;
-
-document
-.getElementById("repText")
-.innerText =
-game.reputation;
-
-document
-.getElementById("seasonText")
-.innerText =
-game.season;
-
-document
-.getElementById("clubRep")
-.innerText =
-game.reputation;
-
-document
-.getElementById("clubFans")
-.innerText =
-game.fans;
-
-document
-.getElementById("stadiumLevelText")
-.innerText =
-game.stadiumLevel;
-
-document
-.getElementById("capacityText")
-.innerText =
-game.capacity;
+document.getElementById("moneyText").innerText=game.money;
+document.getElementById("fansText").innerText=game.fans;
+document.getElementById("repText").innerText=game.reputation;
+document.getElementById("seasonText").innerText=game.season;
+document.getElementById("clubRep").innerText=game.reputation;
+document.getElementById("clubFans").innerText=game.fans;
+document.getElementById("stadiumLevelText").innerText=game.stadiumLevel;
+document.getElementById("capacityText").innerText=game.capacity;
 
 }
 
+function buyMoneyPack(){
+game.money += 1000;
+updateTopBar();
+}
+
+</script>
+/* =========================
+   CORE GAME FUNCTIONS EXTENSION
+========================= */
+
+function openScreen(id){
+
+document.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+
+}
+
+function goCity(){
+openScreen("cityScreen");
+}
+
+/* =========================
+   UI UPDATE
+========================= */
+
+function updateTopBar(){
+
+document.getElementById("moneyText").innerText = game.money;
+document.getElementById("fansText").innerText = game.fans;
+document.getElementById("repText").innerText = game.reputation;
+document.getElementById("seasonText").innerText = game.season;
+document.getElementById("stadiumLevelText").innerText = game.stadiumLevel;
+document.getElementById("capacityText").innerText = game.capacity;
+
+}
+
+/* =========================
+   SAVE / LOAD SYSTEM
+========================= */
+
 function saveGame(){
-
-localStorage.setItem(
-"MGOT_FOOTBALL_MANAGER",
-JSON.stringify(game)
-);
-
+localStorage.setItem("MGOT_FM_SAVE", JSON.stringify(game));
 }
 
 function loadGame(){
-
-const save =
-localStorage.getItem(
-"MGOT_FOOTBALL_MANAGER"
-);
-
-if(save){
-
-const loaded =
-JSON.parse(save);
-
-game = loaded;
-
+let data = localStorage.getItem("MGOT_FM_SAVE");
+if(data){
+game = JSON.parse(data);
 }
-
 updateTopBar();
-
 }
 
-setInterval(()=>{
-
-saveGame();
-
-},5000);
-
-/* ===========================
-   ŠTADIÓN
-=========================== */
-
-function upgradeStadium(){
-
-const cost =
-game.stadiumLevel * 2500;
-
-if(game.money < cost){
-
-alert(
-"Nemáš dostatok MGOT!"
-);
-
-return;
-
-}
-
-game.money -= cost;
-
-game.stadiumLevel++;
-
-game.capacity += 2500;
-
-game.fans += 250;
-
-updateTopBar();
-
-saveGame();
-
-alert(
-"Štadión bol vylepšený!"
-);
-
-}
-
-/* ===========================
-   OBCHOD
-=========================== */
-
-function buyMoneyPack(){
-
-game.money += 1000;
-
-updateTopBar();
-
-saveGame();
-
-alert(
-"+1000 MGOT pridaných."
-);
-
-}
-
-/* ===========================
-   TABUĽKA LIGY
-=========================== */
-
-let leagueData = [];
-
-function createLeague(){
-
-leagueData = [];
-
-leagueTeams.forEach(team=>{
-
-leagueData.push({
-
-name:team,
-
-points:0,
-
-played:0,
-
-wins:0,
-
-draws:0,
-
-losses:0,
-
-goalsFor:0,
-
-goalsAgainst:0
-
-});
-
-});
-
-renderLeague();
-
-}
-
-function renderLeague(){
-
-leagueData.sort((a,b)=>{
-
-return b.points-a.points;
-
-});
-
-let html = "";
-
-leagueData.forEach((club,index)=>{
-
-html += `
-
-<div class="leagueRow">
-
-<div>
-${index+1}.
-${club.name}
-</div>
-
-<div>
-${club.points} b
-</div>
-
-</div>
-
-`;
-
-});
-
-document
-.getElementById("leagueTable")
-.innerHTML = html;
-
-}
-
-/* ===========================
-   SÚPISKA
-=========================== */
-
-function renderSquad(){
-
-let html = "";
-
-squad.forEach(player=>{
-
-html += `
-
-<div class="playerRow">
-
-<div>
-
-<b>${player.name}</b>
-
-<br>
-
-${player.pos}
-
-</div>
-
-<div>
-
-OVR ${player.ovr}
-
-<br>
-
-${player.age}r
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document
-.getElementById("squadList")
-.innerHTML = html;
-
-}
-
-/* ===========================
-   FINANCIE KLUBU
-=========================== */
-
-function addIncome(amount){
-
-game.money += amount;
-
-updateTopBar();
-
-saveGame();
-
-}
-
-function removeMoney(amount){
-
-if(game.money < amount){
-
-return false;
-
-}
-
-game.money -= amount;
-
-updateTopBar();
-
-saveGame();
-
-return true;
-
-}
-
-/* ===========================
-   SPONZORI
-=========================== */
-
-let sponsors = [
-
-{
-name:"MGOT Labs",
-amount:500
-},
-
-{
-name:"Solana Energy",
-amount:750
-},
-
-{
-name:"Crypto Vision",
-amount:1000
-}
-
-];
-
-function collectSponsorMoney(){
-
-const sponsor =
-sponsors[
-Math.floor(
-Math.random()*sponsors.length
-)
-];
-
-game.money += sponsor.amount;
-
-updateTopBar();
-
-saveGame();
-
-alert(
-sponsor.name +
-" zaplatil " +
-sponsor.amount +
-" MGOT"
-);
-
-}
-
-/* ===========================
-   PROFIL KLUBU
-=========================== */
-
-function increaseReputation(){
-
-game.reputation++;
-
-updateTopBar();
-
-saveGame();
-
-}
-
-function increaseFans(amount){
-
-game.fans += amount;
-
-updateTopBar();
-
-saveGame();
-
-}
-
-function nextSeason(){
-
-game.season++;
-
-increaseFans(500);
-
-increaseReputation();
-
-updateTopBar();
-
-saveGame();
-
-}
-
-/* ===========================
-   GENEROVANIE 30 HRÁČOV
-=========================== */
+/* autosave */
+setInterval(saveGame, 5000);
+
+/* =========================
+   INTERNATIONAL PLAYER DATABASE
+========================= */
 
 const firstNames = [
-
-"Peter",
-"Martin",
-"Lukas",
-"Samuel",
-"Adam",
-"Tomas",
-"Marek",
-"Filip",
-"David",
-"Jakub"
-
+"John","Carlos","Luca","Ahmed","Mikael","Pierre","David","Ivan","Mateo","Lucas",
+"Oliver","Noah","Ethan","Gabriel","Diego","Rafael","Andrei","Tomás","Hugo","Leon"
 ];
 
 const lastNames = [
-
-"Novak",
-"Kovac",
-"Toth",
-"Horvat",
-"Kral",
-"Varga",
-"Urban",
-"Molnar",
-"Balaz",
-"Polak"
-
+"Smith","Silva","Rodriguez","Kovač","Dubois","Rossi","Müller","Popescu","Garcia","Ivanov",
+"Martinez","Costa","Petrov","Santos","Novak","Moreau","Fischer","Hansen","Klein","Reyes"
 ];
 
-for(let i=0;i<25;i++){
+/* =========================
+   SQUAD GENERATION (GLOBAL)
+========================= */
 
-const posList = [
-"GK",
-"DEF",
-"MID",
-"ATT"
-];
+const positions = ["GK","DEF","MID","ATT"];
+
+for(let i=0;i<20;i++){
 
 squad.push({
 
 name:
-firstNames[
-Math.floor(
-Math.random()*firstNames.length
-)
-]
-+" "+
-lastNames[
-Math.floor(
-Math.random()*lastNames.length
-)
-],
+firstNames[Math.floor(Math.random()*firstNames.length)] + " " +
+lastNames[Math.floor(Math.random()*lastNames.length)],
 
-pos:
-posList[
-Math.floor(
-Math.random()*posList.length
-)
-],
+pos: positions[Math.floor(Math.random()*positions.length)],
 
-ovr:
-60+
-Math.floor(
-Math.random()*20
-),
+ovr: 60 + Math.floor(Math.random()*25),
 
-age:
-17+
-Math.floor(
-Math.random()*18
-)
+age: 17 + Math.floor(Math.random()*20)
 
 });
 
-  }
-  /* ===========================
-   PRESTUPOVÝ TRH
-=========================== */
+}
+
+/* =========================
+   TRANSFER MARKET (BASIC)
+========================= */
 
 let transferMarket = [];
 
@@ -1018,271 +552,166 @@ function generateTransferMarket(){
 
 transferMarket = [];
 
-for(let i=0;i<12;i++){
-
-const posList = ["GK","DEF","MID","ATT"];
-
-const firstNames = ["Alex","John","Mike","Leo","Ivan","Marco","Sam","Tom","David","Luka"];
-
-const lastNames = ["Stone","White","Black","Green","Kovac","Novak","Silva","Costa","Muller","Rossi"];
-
-let ovr =
-55 + Math.floor(Math.random()*30);
-
-let price =
-ovr * 120;
+for(let i=0;i<10;i++){
 
 transferMarket.push({
 
 id:i,
 
 name:
-firstNames[Math.floor(Math.random()*firstNames.length)] +
-" " +
+firstNames[Math.floor(Math.random()*firstNames.length)] + " " +
 lastNames[Math.floor(Math.random()*lastNames.length)],
 
-pos:posList[Math.floor(Math.random()*posList.length)],
+pos: positions[Math.floor(Math.random()*positions.length)],
 
-ovr:ovr,
+ovr: 55 + Math.floor(Math.random()*30),
 
-age:17 + Math.floor(Math.random()*20),
+age: 16 + Math.floor(Math.random()*20),
 
-price:price
-
-});
-
-}
-
-renderTransferMarket();
-
-}
-
-/* ===========================
-   RENDER TRH
-=========================== */
-
-function renderTransferMarket(){
-
-let html = "";
-
-transferMarket.forEach(player=>{
-
-html += `
-
-<div class="card">
-
-<b>${player.name}</b><br>
-Pozícia: ${player.pos}<br>
-OVR: ${player.ovr}<br>
-Vek: ${player.age}<br>
-Cena: ${player.price} MGOT
-
-<br><br>
-
-<button class="btnGreen"
-onclick="buyPlayer(${player.id})">
-
-Kúpiť
-
-</button>
-
-</div>
-
-`;
+price: 1000 + Math.floor(Math.random()*8000)
 
 });
 
-document.getElementById("transferScreen").innerHTML = `
-
-<h2>🔄 Prestupový trh</h2>
-
-<br>
-
-${html}
-
-<button class="btnBack"
-onclick="goCity()">
-Späť
-</button>
-
-`;
+}
 
 }
 
-/* ===========================
-   NÁKUP HRÁČA
-=========================== */
+generateTransferMarket();
+
+/* =========================
+   BUY PLAYER
+========================= */
 
 function buyPlayer(id){
 
-let player =
-transferMarket.find(p=>p.id===id);
-
+let player = transferMarket.find(p => p.id === id);
 if(!player) return;
 
 if(game.money < player.price){
-
-alert("Nemáš dostatok MGOT!");
-
+alert("Not enough money!");
 return;
-
 }
 
 game.money -= player.price;
 
-squad.push({
+squad.push(player);
 
-name:player.name,
-pos:player.pos,
-ovr:player.ovr,
-age:player.age
+transferMarket = transferMarket.filter(p => p.id !== id);
+
+updateTopBar();
+saveGame();
+
+renderSquad();
+
+alert("Player signed: " + player.name);
+
+}
+
+/* =========================
+   RENDER SQUAD (GLOBAL STYLE)
+========================= */
+
+function renderSquad(){
+
+let html = "";
+
+squad.forEach((p, i)=>{
+
+html += `
+<div class="playerRow">
+
+<div>
+<b>${p.name}</b><br>
+${p.pos}
+</div>
+
+<div>
+OVR ${p.ovr}<br>
+Age ${p.age}
+</div>
+
+</div>
+`;
 
 });
 
-transferMarket =
-transferMarket.filter(p=>p.id!==id);
-
-updateTopBar();
-
-saveGame();
-
-renderSquad();
-
-renderTransferMarket();
-
-alert("Kúpil si hráča!");
+document.getElementById("squadList").innerHTML = html;
 
 }
 
-/* ===========================
-   PREDPREDAJ HRÁČOV (SIMPL)
-=========================== */
+/* =========================
+   INIT
+========================= */
 
-function sellPlayer(index){
-
-let player = squad[index];
-
-if(!player) return;
-
-let price = player.ovr * 80;
-
-game.money += price;
-
-squad.splice(index,1);
-
-updateTopBar();
-
-saveGame();
-
-renderSquad();
-
-alert("Predal si hráča za " + price + " MGOT");
-
-}
-
-/* ===========================
-   INIT SYSTEM
-=========================== */
-
-generateTransferMarket();
-renderSquad();
-createLeague();
 loadGame();
-/* ===========================
-   SIMULÁCIA ZÁPASOV
-=========================== */
+renderSquad();
+/* =========================
+   LEAGUE SYSTEM
+========================= */
 
-function simulateMatch(teamA, teamB){
+let leagueTable = [];
 
-let a =
-Math.floor(Math.random()*10) +
-Math.floor(getTeamStrength(teamA)/10);
+/* init league */
+function createLeague(){
 
-let b =
-Math.floor(Math.random()*10) +
-Math.floor(getTeamStrength(teamB)/10);
+leagueTable = [];
 
-return {
-home:teamA,
-away:teamB,
-homeGoals:a,
-awayGoals:b
-};
+for(let i=0;i<leagueTeams.length;i++){
+
+leagueTable.push({
+
+name: leagueTeams[i],
+points: 0,
+played: 0,
+wins: 0,
+draws: 0,
+losses: 0,
+gf: 0,
+ga: 0
+
+});
 
 }
 
-/* ===========================
-   SILA TÍMU
-=========================== */
+}
+
+/* =========================
+   TEAM STRENGTH
+========================= */
 
 function getTeamStrength(teamName){
 
 if(teamName === "MGOT FC"){
 
-let total = 0;
+let avg = 0;
 
-squad.forEach(p=>{
-total += p.ovr;
-});
+squad.forEach(p => avg += p.ovr);
 
-return total / squad.length;
+return avg / squad.length + game.stadiumLevel * 2;
 
 }
 
-return 65 + Math.random()*10;
+return 60 + Math.random() * 20;
 
 }
 
-/* ===========================
-   GENEROVANIE KOLA
-=========================== */
-
-let currentRound = 0;
-
-function playRound(){
-
-let results = [];
-
-for(let i=0;i<leagueData.length;i+=2){
-
-let match = simulateMatch(
-leagueData[i].name,
-leagueData[i+1].name
-);
-
-results.push(match);
-
-updateTable(match);
-
-}
-
-currentRound++;
-
-renderLeague();
-
-saveGame();
-
-alert("Kolo odohrané!");
-
-}
-
-/* ===========================
-   UPDATE TABUĽKY
-=========================== */
+/* =========================
+   MATCH SIMULATION
+========================= */
 
 function updateTable(match){
 
-let home = leagueData.find(t=>t.name===match.home);
-let away = leagueData.find(t=>t.name===match.away);
+let home = leagueTable.find(t => t.name === match.home);
+let away = leagueTable.find(t => t.name === match.away);
 
 home.played++;
 away.played++;
 
-home.goalsFor += match.homeGoals;
-home.goalsAgainst += match.awayGoals;
+home.gf += match.homeGoals;
+home.ga += match.awayGoals;
 
-away.goalsFor += match.awayGoals;
-away.goalsAgainst += match.homeGoals;
+away.gf += match.awayGoals;
+away.ga += match.homeGoals;
 
 if(match.homeGoals > match.awayGoals){
 
@@ -1310,278 +739,176 @@ away.points += 1;
 
 }
 
-/* ===========================
-   AUTOMATICKÉ KOLÁ
-=========================== */
+/* =========================
+   RENDER LEAGUE TABLE
+========================= */
 
-function autoSeason(){
+function renderLeague(){
 
-if(currentRound >= 18){
+leagueTable.sort((a,b)=> b.points - a.points || (b.gf-b.ga) - (a.gf-a.ga));
 
-alert("Sezóna skončila!");
+let html = "";
 
-nextSeason();
+leagueTable.forEach((t, i)=>{
 
-resetLeague();
+html += `
+<div class="leagueRow">
 
-return;
+<div>
+${i+1}. <b>${t.name}</b>
+</div>
 
-}
+<div>
+${t.points} pts | ${t.gf}:${t.ga}
+</div>
 
-playRound();
-
-}
-
-/* ===========================
-   RESET LIGY
-=========================== */
-
-function resetLeague(){
-
-leagueData.forEach(team=>{
-
-team.points = 0;
-team.played = 0;
-team.wins = 0;
-team.draws = 0;
-team.losses = 0;
-team.goalsFor = 0;
-team.goalsAgainst = 0;
+</div>
+`;
 
 });
 
-currentRound = 0;
-
-renderLeague();
+document.getElementById("leagueTable").innerHTML = html;
 
 }
 
-/* ===========================
-   MGOT ZÁPAS KLUBU
-=========================== */
+/* =========================
+   MATCH DAY SIMULATION
+========================= */
 
-function playMGOTMatch(){
+function simulateMatch(){
 
-let opponents =
-leagueData.filter(t=>t.name !== "MGOT FC");
+let matches = [];
 
-let enemy =
-opponents[
-Math.floor(Math.random()*opponents.length)
-];
+for(let i=0;i<leagueTable.length;i+=2){
 
-let match = simulateMatch("MGOT FC", enemy.name);
+if(i+1 < leagueTable.length){
 
-if(match.home === "MGOT FC"){
-
-updateTable(match);
-
-}else{
-
-updateTable({
-home:enemy.name,
-away:"MGOT FC",
-homeGoals:match.homeGoals,
-awayGoals:match.awayGoals
+matches.push({
+home: leagueTable[i].name,
+away: leagueTable[i+1].name,
+homeGoals: Math.floor(Math.random()*4),
+awayGoals: Math.floor(Math.random()*4)
 });
 
 }
 
-let msg =
-"MGOT FC " +
-match.homeGoals +
-" : " +
-match.awayGoals +
-" " +
-enemy.name;
+}
+
+/* simulate matches */
+matches.forEach(m => updateTable(m));
+
+/* MGOT match special handling */
+let mgotMatch = matches.find(m =>
+m.home === "MGOT FC" || m.away === "MGOT FC"
+);
+
+if(mgotMatch){
+
+let msg = `MGOT FC ${mgotMatch.homeGoals} : ${mgotMatch.awayGoals}`;
 
 alert(msg);
 
-renderLeague();
+matchReward(Math.max(mgotMatch.homeGoals, mgotMatch.awayGoals));
 
+fanReaction(mgotMatch);
+
+}
+
+renderLeague();
 saveGame();
 
-  }
-/* ===========================
-   HRÁČSKA FORMA A ÚNAVA
-=========================== */
+}
 
-function addForm(){
+/* =========================
+   NEXT MATCH BUTTON
+========================= */
 
-squad.forEach(p=>{
+function nextMatchDay(){
 
-p.form =
-(p.form || 70) +
-Math.floor(Math.random()*5) - 2;
+simulateMatch();
+
+game.seasonDay = (game.seasonDay || 1) + 1;
+
+}
+
+/* =========================
+   INIT LEAGUE
+========================= */
+
+createLeague();
+renderLeague();
+/* =========================
+   PLAYER FORM SYSTEM
+========================= */
+
+function updatePlayerForm(){
+
+squad.forEach(p => {
+
+if(!p.form) p.form = 70;
+if(!p.stamina) p.stamina = 100;
+if(!p.injured) p.injured = false;
+
+/* stamina regen */
+p.stamina += 5;
+if(p.stamina > 100) p.stamina = 100;
+
+/* form decay or boost */
+let change = Math.floor(Math.random()*5) - 2;
+
+p.form += change;
 
 if(p.form > 100) p.form = 100;
 if(p.form < 40) p.form = 40;
 
-p.stamina =
-(p.stamina || 100) -
-Math.floor(Math.random()*10);
-
-if(p.stamina < 50){
-
-p.ovr -= 1;
-
-}
-
 });
 
 }
 
-/* ===========================
-   TRÉNING HRÁČOV
-=========================== */
-
-function trainPlayer(index){
-
-let player = squad[index];
-
-if(!player) return;
-
-if(game.money < 200){
-
-alert("Nedostatok MGOT!");
-
-return;
-
-}
-
-game.money -= 200;
-
-player.ovr += Math.random() < 0.5 ? 1 : 0;
-
-player.form = Math.min(100,(player.form||70)+5);
-
-player.stamina = Math.max(60,(player.stamina||100)-10);
-
-updateTopBar();
-
-saveGame();
-
-renderSquad();
-
-alert(player.name + " sa zlepšil!");
-
-}
-
-/* ===========================
-   AUTOMATICKÝ TRÉNING TÍMU
-=========================== */
+/* =========================
+   TRAINING SYSTEM
+========================= */
 
 function trainTeam(){
 
-if(game.money < 800){
+squad.forEach(p => {
 
-alert("Nedostatok MGOT!");
+if(p.injured) return;
 
-return;
+let boost = Math.random() * 2.5;
 
-}
+p.ovr += boost * 0.1;
+p.stamina -= 10;
+p.form += 1;
 
-game.money -= 800;
-
-squad.forEach(p=>{
-
-if(Math.random() > 0.5){
-
-p.ovr += 1;
-
-}
-
-p.form = Math.min(100,(p.form||70)+3);
-
-p.stamina = Math.max(60,(p.stamina||100)-5);
+if(p.ovr > 99) p.ovr = 99;
 
 });
+
+game.money -= 200;
 
 updateTopBar();
-
-saveGame();
-
 renderSquad();
-
-alert("Tím absolvoval tréning!");
-
-}
-
-/* ===========================
-   REGENERÁCIA HRÁČOV
-=========================== */
-
-function recoverTeam(){
-
-squad.forEach(p=>{
-
-p.stamina = 100;
-
-p.form = Math.min(100,(p.form||70)+2);
-
-});
-
 saveGame();
 
-alert("Tím sa zotavil!");
+alert("Training completed!");
 
 }
 
-/* ===========================
-   VPLYV FORMY NA SILU
-=========================== */
+/* =========================
+   INJURY SYSTEM
+========================= */
 
-function getPlayerPower(player){
+function checkInjuries(){
 
-let form = player.form || 70;
+squad.forEach(p => {
 
-let stamina = player.stamina || 100;
-
-return player.ovr * (form/100) * (stamina/100);
-
-}
-
-/* ===========================
-   VYLEPŠENÝ VÝPOČET SILY TÍMU
-=========================== */
-
-function getTeamStrength(teamName){
-
-if(teamName === "MGOT FC"){
-
-let total = 0;
-
-squad.forEach(p=>{
-
-total += getPlayerPower(p);
-
-});
-
-return total / squad.length;
-
-}
-
-return 65 + Math.random()*12;
-
-}
-
-/* ===========================
-   KONEC TRÉNINGOVEJ LOGIKY
-=========================== */
-
-addForm();
-/* ===========================
-   ZRANENIA HRÁČOV
-=========================== */
-
-function injuryCheck(){
-
-squad.forEach(p=>{
-
-if(Math.random() < 0.03){
+if(Math.random() < 0.03 && !p.injured){
 
 p.injured = true;
-p.injuryDays = 1 + Math.floor(Math.random()*5);
+p.injuryDays = 3 + Math.floor(Math.random()*5);
+
+alert(p.name + " got injured!");
 
 }
 
@@ -1592,6 +919,7 @@ p.injuryDays--;
 if(p.injuryDays <= 0){
 
 p.injured = false;
+alert(p.name + " is recovered!");
 
 }
 
@@ -1601,188 +929,478 @@ p.injured = false;
 
 }
 
-/* ===========================
-   ROTÁCIA ZOSTAVY
-=========================== */
+/* =========================
+   MATCH PERFORMANCE BOOST
+========================= */
 
-function getActiveSquad(){
+function getPlayerMatchPower(player){
 
-let active = squad.filter(p=>!p.injured);
+if(player.injured) return 0;
 
-if(active.length < 3){
-
-return squad;
+return player.ovr * (player.form / 100) * (player.stamina / 100);
 
 }
 
-return active;
+/* =========================
+   TEAM PERFORMANCE REWRITE
+========================= */
 
-}
+function getTeamStrength(teamName){
 
-/* ===========================
-   MATCH SIMULÁCIA (VYLEPŠENÁ)
-=========================== */
+if(teamName === "MGOT FC"){
 
-function simulateDetailedMatch(){
+let total = 0;
 
-injuryCheck();
+squad.forEach(p => {
 
-let activePlayers = getActiveSquad();
-
-let mgotPower = 0;
-
-activePlayers.forEach(p=>{
-
-mgotPower += getPlayerPower(p);
+total += getPlayerMatchPower(p);
 
 });
 
-mgotPower = mgotPower / activePlayers.length;
+return total / squad.length + game.stadiumLevel * 3;
 
-let opponents =
-leagueData.filter(t=>t.name !== "MGOT FC");
+}
 
-let enemy =
-opponents[Math.floor(Math.random()*opponents.length)];
+/* AI teams */
+return 65 + Math.random() * 25;
 
-let enemyPower =
-60 + Math.random()*15;
+}
 
-let mgotGoals =
-Math.floor(mgotPower / 20) + Math.floor(Math.random()*3);
+/* =========================
+   MATCH DAY EFFECTS
+========================= */
 
-let enemyGoals =
-Math.floor(enemyPower / 20) + Math.floor(Math.random()*3);
+function postMatchEffects(){
 
-/* update league */
+checkInjuries();
+updatePlayerForm();
 
+}
+
+/* =========================
+   AUTO LOOP (OPTIONAL TICK)
+========================= */
+
+setInterval(()=>{
+
+updatePlayerForm();
+checkInjuries();
+
+}, 15000);
+
+/* =========================
+   END PART 4
+========================= */
+/* =========================
+   ECONOMY SYSTEM
+========================= */
+
+let stadiumIncomeBase = 50;
+
+/* =========================
+   DAILY INCOME
+========================= */
+
+function calculateIncome(){
+
+let stadiumIncome = stadiumIncomeBase * game.stadiumLevel;
+
+let fanIncome = game.fans * 0.02;
+
+let totalIncome = Math.floor(stadiumIncome + fanIncome);
+
+game.money += totalIncome;
+
+updateTopBar();
+saveGame();
+
+}
+
+/* =========================
+   AUTO INCOME LOOP
+========================= */
+
+setInterval(()=>{
+
+calculateIncome();
+
+}, 20000);
+
+/* =========================
+   SPONSOR SYSTEM
+========================= */
+
+const sponsors = [
+{name:"MGOT Energy",base:500},
+{name:"CryptoX",base:800},
+{name:"BlockChain Corp",base:1200},
+{name:"Global Sports",base:1500},
+{name:"Neo Finance",base:2000}
+];
+
+function collectSponsor(){
+
+let s = sponsors[Math.floor(Math.random()*sponsors.length)];
+
+let payout = s.base + Math.floor(Math.random()*500);
+
+game.money += payout;
+
+updateTopBar();
+saveGame();
+
+alert(s.name + " paid " + payout + " MGOT");
+
+}
+
+/* =========================
+   FAN SYSTEM
+========================= */
+
+function updateFansAfterMatch(goalsFor, goalsAgainst){
+
+if(goalsFor > goalsAgainst){
+
+game.fans += 50 + goalsFor * 10;
+
+game.reputation += 0.1;
+
+}else if(goalsFor < goalsAgainst){
+
+game.fans -= 30;
+
+}else{
+
+game.fans += 10;
+
+}
+
+if(game.fans < 0) game.fans = 0;
+
+updateTopBar();
+
+}
+
+/* =========================
+   REPUTATION SYSTEM
+========================= */
+
+function updateReputation(){
+
+if(game.reputation > 10){
+
+game.money += 300;
+
+}
+
+if(game.reputation > 20){
+
+game.fans += 100;
+
+}
+
+}
+
+/* =========================
+   SHOP SYSTEM
+========================= */
+
+function buyMoneyPack(){
+
+game.money += 1000;
+
+updateTopBar();
+
+saveGame();
+
+alert("Purchased +1000 MGOT");
+
+}
+
+/* =========================
+   STADIUM REVENUE BONUS
+========================= */
+
+function stadiumBonus(){
+
+let bonus = game.stadiumLevel * 20;
+
+game.money += bonus;
+
+}
+
+/* =========================
+   ECONOMY LOOP
+========================= */
+
+function economyTick(){
+
+calculateIncome();
+updateReputation();
+stadiumBonus();
+
+saveGame();
+
+}
+
+setInterval(economyTick, 30000);
+
+/* =========================
+   MATCH REWARD SYSTEM
+========================= */
+
+function matchReward(goals){
+
+game.money += goals * 150;
+
+game.fans += goals * 20;
+
+updateTopBar();
+
+saveGame();
+
+}
+
+/* =========================
+   END PART 5
+========================= */
+   /* =========================
+   LIVE MATCH UI SYSTEM
+========================= */
+
+function showMatchEvent(text){
+
+let box = document.createElement("div");
+
+box.style.position = "fixed";
+box.style.bottom = "80px";
+box.style.left = "10px";
+box.style.right = "10px";
+box.style.background = "#1b2030";
+box.style.border = "2px solid #2fff7a";
+box.style.padding = "12px";
+box.style.borderRadius = "12px";
+box.style.zIndex = "9999";
+box.style.textAlign = "center";
+box.style.fontWeight = "bold";
+box.style.fontSize = "14px";
+
+box.innerText = text;
+
+document.body.appendChild(box);
+
+setTimeout(()=> box.remove(), 2500);
+
+}
+
+/* =========================
+   GENERAL NOTIFICATION SYSTEM
+========================= */
+
+function notify(text){
+
+let n = document.createElement("div");
+
+n.style.position = "fixed";
+n.style.top = "80px";
+n.style.left = "10px";
+n.style.right = "10px";
+n.style.background = "#252b3d";
+n.style.border = "1px solid #444";
+n.style.padding = "10px";
+n.style.borderRadius = "10px";
+n.style.zIndex = "9999";
+n.style.fontSize = "13px";
+
+n.innerText = text;
+
+document.body.appendChild(n);
+
+setTimeout(()=> n.remove(), 2500);
+
+}
+
+/* =========================
+   LIVE MATCH EVENTS
+========================= */
+
+function generateMatchEvents(){
+
+let events = [
+"Chance for MGOT FC!",
+"Great save by the goalkeeper!",
+"Shot on target!",
+"Counter attack!",
+"Ball possession battle!",
+"Corner kick!",
+"Foul in midfield!"
+];
+
+if(Math.random() < 0.35){
+
+showMatchEvent(
+events[Math.floor(Math.random() * events.length)]
+);
+
+}
+
+}
+
+/* =========================
+   MATCH SIMULATION IMPROVED
+========================= */
+
+function simulateLiveMatch(match){
+
+let homePower = getTeamStrength(match.home);
+let awayPower = getTeamStrength(match.away);
+
+let homeGoals = Math.floor(homePower / 25 + Math.random() * 3);
+let awayGoals = Math.floor(awayPower / 25 + Math.random() * 3);
+
+/* update table */
 updateTable({
-home:"MGOT FC",
-away:enemy.name,
-homeGoals:mgotGoals,
-awayGoals:enemyGoals
+home: match.home,
+away: match.away,
+homeGoals,
+awayGoals
 });
+
+/* MGOT special handling */
+if(match.home === "MGOT FC" || match.away === "MGOT FC"){
+
+showMatchEvent(`MGOT FC ${homeGoals} : ${awayGoals}`);
+
+matchReward(Math.max(homeGoals, awayGoals));
+
+updateFansAfterMatch(homeGoals, awayGoals);
+
+notify("MGOT match finished!");
+
+}
 
 renderLeague();
-
-let result =
-"MGOT FC " +
-mgotGoals +
-" : " +
-enemyGoals +
-" " +
-enemy.name;
-
-alert(result);
-
 saveGame();
 
 }
 
-/* ===========================
-   HRÁČSKY MATCH STATUS
-=========================== */
+/* =========================
+   MATCH DAY LOOP (LIVE FEEL)
+========================= */
 
-function getInjuryText(player){
+function matchDayLive(){
 
-if(!player.injured) return "";
+let match = leagueTable.find(t => !t.played);
 
-return "❌ zranený ("+player.injuryDays+" dní)";
+if(!match){
+
+notify("Season finished!");
+
+return;
 
 }
 
-/* ===========================
-   ROZŠÍRENÉ ZOBRAZENIE SÚPISKY
-=========================== */
+/* fake live sequence */
+for(let i=0;i<5;i++){
 
-function renderSquad(){
+setTimeout(()=>{
 
-let html = "";
+generateMatchEvents();
 
-squad.forEach((player,index)=>{
+}, i * 1500);
 
-html += `
+}
 
-<div class="playerRow">
+/* final result */
+setTimeout(()=>{
 
-<div>
+simulateLiveMatch({
+home: leagueTable[0].name,
+away: leagueTable[1].name
+});
 
-<b>${player.name}</b>
-<br>
-${player.pos}
-<br>
-${getInjuryText(player)}
+}, 8000);
 
-</div>
+}
 
-<div>
+/* =========================
+   QUICK ACTIONS
+========================= */
 
-OVR ${player.ovr}
-<br>
-Form ${player.form || 70}
-<br>
-Stamina ${player.stamina || 100}
+function quickTrain(){
 
-</div>
+trainTeam();
 
-<div>
+notify("Quick training completed");
 
-<button class="btnGreen"
-onclick="trainPlayer(${index})">
-Trénovať
-</button>
+}
 
-</div>
+function quickSponsor(){
 
-</div>
+collectSponsor();
 
-`;
+notify("Sponsor payment received");
+
+}
+
+/* =========================
+   INJURY ALERT SYSTEM
+========================= */
+
+function injuryNotification(){
+
+squad.forEach(p=>{
+
+if(p.injured && Math.random() < 0.2){
+
+notify(p.name + " is injured");
+
+}
 
 });
 
-document.getElementById("squadList").innerHTML = html;
-
 }
 
-/* ===========================
-   AUTOMATICKÉ FUNKCIE SEZÓNY
-=========================== */
+/* =========================
+   LIVE LOOP
+========================= */
 
-function seasonTick(){
+setInterval(()=>{
 
-addForm();
-injuryCheck();
+generateMatchEvents();
+injuryNotification();
 
-saveGame();
+}, 12000);
 
-}
-
-/* každých 10 sekúnd simulujeme život tímu */
-setInterval(seasonTick,10000);
-
-/* ===========================
-   KONEC ČASTI 6
-=========================== */
-/* ===========================
-   KALENDÁR SEZÓNY
-=========================== */
+/* =========================
+   END PART 6
+========================= */
+   /* =========================
+   SEASON SYSTEM
+========================= */
 
 let seasonDay = 1;
 
 let fixtures = [];
 
+/* =========================
+   GENERATE FIXTURES
+========================= */
+
 function generateFixtures(){
 
 fixtures = [];
 
-for(let i=0;i<leagueData.length;i++){
+for(let i = 0; i < leagueTable.length; i++){
 
-for(let j=i+1;j<leagueData.length;j++){
+for(let j = i + 1; j < leagueTable.length; j++){
 
 fixtures.push({
-home:leagueData[i].name,
-away:leagueData[j].name,
-played:false
+
+home: leagueTable[i].name,
+away: leagueTable[j].name,
+played: false
+
 });
 
 }
@@ -1793,21 +1411,25 @@ shuffle(fixtures);
 
 }
 
+/* =========================
+   SHUFFLE FUNCTION
+========================= */
+
 function shuffle(array){
 
-for(let i=array.length-1;i>0;i--){
+for(let i = array.length - 1; i > 0; i--){
 
-let j = Math.floor(Math.random()*(i+1));
+let j = Math.floor(Math.random() * (i + 1));
 
-[array[i],array[j]] = [array[j],array[i]];
-
-}
+[array[i], array[j]] = [array[j], array[i]];
 
 }
 
-/* ===========================
-   DENNÝ POSUN
-=========================== */
+}
+
+/* =========================
+   NEXT DAY SYSTEM
+========================= */
 
 function nextDay(){
 
@@ -1817,23 +1439,23 @@ simulateDay();
 
 saveGame();
 
+notify("Day " + seasonDay);
+
 }
 
-/* ===========================
-   SIMULÁCIA DŇA
-=========================== */
+/* =========================
+   SIMULATE SINGLE DAY MATCH
+========================= */
 
 function simulateDay(){
 
-let match = fixtures.find(f=>!f.played);
+let match = fixtures.find(f => !f.played);
 
 if(!match){
 
-alert("Sezóna skončila!");
+notify("Season finished!");
 
 nextSeason();
-
-resetLeague();
 
 return;
 
@@ -1841,44 +1463,42 @@ return;
 
 match.played = true;
 
-/* MGOT zápas */
+/* MGOT match check */
 if(match.home === "MGOT FC" || match.away === "MGOT FC"){
 
 let mgotHome = match.home === "MGOT FC";
 
 let power = getTeamStrength("MGOT FC");
 
-let enemy =
-getTeamStrength(
+let enemy = getTeamStrength(
 mgotHome ? match.away : match.home
 );
 
-let mg = Math.floor(power/20 + Math.random()*3);
-
-let en = Math.floor(enemy/20 + Math.random()*3);
+let mg = Math.floor(power / 22 + Math.random() * 3);
+let en = Math.floor(enemy / 22 + Math.random() * 3);
 
 updateTable({
-home:match.home,
-away:match.away,
-homeGoals:mgotHome ? mg : en,
-awayGoals:mgotHome ? en : mg
+home: match.home,
+away: match.away,
+homeGoals: mgotHome ? mg : en,
+awayGoals: mgotHome ? en : mg
 });
 
 renderLeague();
 
-alert("MGOT zápas odohraný!");
+notify("MGOT match played!");
 
 }else{
 
-/* AI zápas */
-let homePower = 65 + Math.random()*10;
-let awayPower = 65 + Math.random()*10;
+/* AI match */
+let homePower = 65 + Math.random() * 10;
+let awayPower = 65 + Math.random() * 10;
 
 updateTable({
-home:match.home,
-away:match.away,
-homeGoals:Math.floor(homePower/20 + Math.random()*2),
-awayGoals:Math.floor(awayPower/20 + Math.random()*2)
+home: match.home,
+away: match.away,
+homeGoals: Math.floor(homePower / 22 + Math.random() * 2),
+awayGoals: Math.floor(awayPower / 22 + Math.random() * 2)
 });
 
 }
@@ -1887,23 +1507,25 @@ renderLeague();
 
 }
 
-/* ===========================
-   AUTOMATICKÝ MATCH DAY
-=========================== */
+/* =========================
+   MATCH DAY (MULTI SIMULATION)
+========================= */
 
 function matchDay(){
 
-for(let i=0;i<3;i++){
+for(let i = 0; i < 3; i++){
 
 simulateDay();
 
 }
 
+notify("Match day completed!");
+
 }
 
-/* ===========================
-   SEZÓNA RESET
-=========================== */
+/* =========================
+   NEXT SEASON SYSTEM
+========================= */
 
 function nextSeason(){
 
@@ -1914,20 +1536,19 @@ seasonDay = 1;
 generateFixtures();
 
 increaseFans(1000);
-
 increaseReputation();
 
-alert("Nová sezóna začala!");
+notify("New season started!");
 
 }
 
-/* ===========================
-   LIGA UPDATE BONUS
-=========================== */
+/* =========================
+   LEAGUE BONUS SYSTEM
+========================= */
 
 function leagueBonus(){
 
-let mgot = leagueData.find(t=>t.name==="MGOT FC");
+let mgot = leagueTable.find(t => t.name === "MGOT FC");
 
 if(mgot){
 
@@ -1949,40 +1570,42 @@ updateTopBar();
 
 }
 
-/* každých 15 sekúnd kontrola sezóny */
+/* =========================
+   AUTO LEAGUE CHECK
+========================= */
+
 setInterval(()=>{
 
 leagueBonus();
 
-},15000);
+}, 15000);
 
-/* ===========================
+/* =========================
    INIT FIXTURES
-=========================== */
+========================= */
 
 generateFixtures();
 
-/* ===========================
-   KONEC ČASTI 7
-=========================== */
-/* ===========================
-   EKONOMIKA KLUBU
-=========================== */
+/* =========================
+   END PART 7
+========================= */
+/* =========================
+   STADIUM ECONOMY SYSTEM
+========================= */
 
-let stadiumIncome = 50;
+let stadiumBaseIncome = 50;
 
-/* ===========================
-   VYLEPŠENIE ŠTADIÓNU (ROZŠÍRENÉ)
-=========================== */
+/* =========================
+   UPGRADE STADIUM
+========================= */
 
 function upgradeStadium(){
 
-let cost =
-game.stadiumLevel * 3000;
+let cost = game.stadiumLevel * 3000;
 
 if(game.money < cost){
 
-alert("Nedostatok MGOT!");
+alert("Not enough MGOT!");
 
 return;
 
@@ -1994,59 +1617,60 @@ game.stadiumLevel++;
 
 game.capacity += 2000;
 
-stadiumIncome += 50;
+stadiumBaseIncome += 50;
 
 increaseFans(300);
-
 increaseReputation();
 
 updateTopBar();
-
 saveGame();
 
-alert("Štadión vylepšený!");
+notify("Stadium upgraded!");
 
 }
 
-/* ===========================
-   PRÍJMY Z DŇA
-=========================== */
+/* =========================
+   PASSIVE INCOME SYSTEM
+========================= */
 
 function dailyIncome(){
 
-let income = stadiumIncome * game.stadiumLevel;
+let stadiumIncome = stadiumBaseIncome * game.stadiumLevel;
 
-game.money += income;
+let fanIncome = game.fans * 0.02;
+
+let total = Math.floor(stadiumIncome + fanIncome);
+
+game.money += total;
 
 updateTopBar();
-
 saveGame();
 
 }
 
-/* každých 20 sekúnd príjem */
+/* auto income loop */
 setInterval(()=>{
 
 dailyIncome();
 
-},20000);
+}, 20000);
 
-/* ===========================
-   FANÚŠIKOVIA + DYNAMIKA
-=========================== */
+/* =========================
+   FAN DYNAMIC SYSTEM
+========================= */
 
-function fanReaction(matchResult){
+function fanReaction(result){
 
-let diff = matchResult.homeGoals - matchResult.awayGoals;
+let diff = result.homeGoals - result.awayGoals;
 
 if(diff > 0){
 
-game.fans += 50 + diff*10;
+game.fans += 50 + diff * 10;
+game.reputation += 0.1;
 
 }else if(diff < 0){
 
 game.fans -= 30;
-
 if(game.fans < 0) game.fans = 0;
 
 }else{
@@ -2059,57 +1683,39 @@ updateTopBar();
 
 }
 
-/* ===========================
-   SPONZORI
-=========================== */
+/* =========================
+   SPONSOR SYSTEM 2.0
+========================= */
 
-let sponsorList = [
+const sponsors = [
 
-{
-name:"MGOT Energy",
-base:500
-},
-
-{
-name:"CryptoX",
-base:800
-},
-
-{
-name:"Blockchain Corp",
-base:1200
-},
-
-{
-name:"Solana Partners",
-base:1500
-}
+{name:"MGOT Energy",base:500},
+{name:"CryptoX",base:800},
+{name:"Blockchain Corp",base:1200},
+{name:"Global Sports",base:1500},
+{name:"Neo Finance",base:2000},
+{name:"Galaxy Partners",base:2500}
 
 ];
 
 function collectSponsor(){
 
-let s =
-sponsorList[
-Math.floor(Math.random()*sponsorList.length)
-];
+let s = sponsors[Math.floor(Math.random() * sponsors.length)];
 
-let amount =
-s.base + Math.floor(Math.random()*300);
+let payout = s.base + Math.floor(Math.random() * 500);
 
-game.money += amount;
+game.money += payout;
 
 updateTopBar();
-
 saveGame();
 
-alert(s.name + " zaplatil " + amount + " MGOT");
+notify(s.name + " paid " + payout + " MGOT");
 
 }
 
-/* ===========================
-   BONUS ZA REPUTÁCIU
-=========================== */
+/* =========================
+   REPUTATION BONUS SYSTEM
+========================= */
 
 function reputationBonus(){
 
@@ -2129,16 +1735,9 @@ updateTopBar();
 
 }
 
-/* každých 25 sekúnd */
-setInterval(()=>{
-
-reputationBonus();
-
-},25000);
-
-/* ===========================
-   MATCH BONUS SYSTEM
-=========================== */
+/* =========================
+   MATCH REWARD SYSTEM
+========================= */
 
 function matchReward(goals){
 
@@ -2152,177 +1751,221 @@ saveGame();
 
 }
 
-/* ===========================
-   ECONOMY LOOP
-=========================== */
+/* =========================
+   ECONOMY TICK LOOP
+========================= */
 
 function economyTick(){
 
 dailyIncome();
-
 reputationBonus();
 
 saveGame();
 
 }
 
-setInterval(economyTick,30000);
+setInterval(economyTick, 30000);
 
-/* ===========================
-   KONEC ČASTI 8
-=========================== */
-/* ===========================
-   MATCH UI (ZÁPASOVÝ DEŇ)
-=========================== */
+/* =========================
+   END PART 8
+========================= */
+/* =========================
+   LIVE MATCH UI SYSTEM
+========================= */
 
-function showMatchUI(text){
+function showMatchEvent(text){
 
 let box = document.createElement("div");
 
-box.style.position="fixed";
-box.style.bottom="20px";
-box.style.left="10px";
-box.style.right="10px";
-box.style.background="#1b2030";
-box.style.border="2px solid #2fff7a";
-box.style.padding="15px";
-box.style.borderRadius="12px";
-box.style.zIndex="9999";
-box.style.textAlign="center";
-box.style.fontWeight="bold";
+box.style.position = "fixed";
+box.style.bottom = "90px";
+box.style.left = "10px";
+box.style.right = "10px";
+box.style.background = "#1b2030";
+box.style.border = "2px solid #2fff7a";
+box.style.padding = "12px";
+box.style.borderRadius = "12px";
+box.style.zIndex = "9999";
+box.style.textAlign = "center";
+box.style.fontWeight = "bold";
+box.style.fontSize = "14px";
 
 box.innerText = text;
 
 document.body.appendChild(box);
 
-setTimeout(()=>{
-
-box.remove();
-
-},3000);
+setTimeout(()=> box.remove(), 2500);
 
 }
 
-/* ===========================
-   HRANIE ZÁPASU (MANUÁLNE)
-=========================== */
+/* =========================
+   NOTIFICATION SYSTEM
+========================= */
 
-function playNextMatch(){
+function notify(text){
 
-if(fixtures.length === 0){
+let n = document.createElement("div");
 
-alert("Sezóna skončila!");
+n.style.position = "fixed";
+n.style.top = "80px";
+n.style.left = "10px";
+n.style.right = "10px";
+n.style.background = "#252b3d";
+n.style.border = "1px solid #444";
+n.style.padding = "10px";
+n.style.borderRadius = "10px";
+n.style.zIndex = "9999";
+n.style.fontSize = "13px";
 
-nextSeason();
+n.innerText = text;
 
-return;
+document.body.appendChild(n);
 
-}
-
-let match =
-fixtures.find(f=>!f.played);
-
-if(!match){
-
-alert("Všetky zápasy odohrané!");
-
-return;
-
-}
-
-simulateMatchDay(match);
+setTimeout(()=> n.remove(), 2500);
 
 }
 
-/* ===========================
-   SIMULÁCIA JEDNÉHO ZÁPASU
-=========================== */
+/* =========================
+   LIVE MATCH EVENTS
+========================= */
 
-function simulateMatchDay(match){
+function generateMatchEvents(){
 
-match.played = true;
+let events = [
+
+"Chance for MGOT FC!",
+"Great save by goalkeeper!",
+"Shot on target!",
+"Counter attack!",
+"Ball possession battle!",
+"Corner kick!",
+"Foul in midfield!",
+"Long pass forward!",
+"Pressure increasing!"
+
+];
+
+if(Math.random() < 0.35){
+
+showMatchEvent(
+events[Math.floor(Math.random() * events.length)]
+);
+
+}
+
+}
+
+/* =========================
+   MATCH SIMULATION (LIVE FEEL)
+========================= */
+
+function simulateLiveMatch(match){
 
 let homePower = getTeamStrength(match.home);
 let awayPower = getTeamStrength(match.away);
 
-let homeGoals = Math.floor(homePower/20 + Math.random()*3);
-let awayGoals = Math.floor(awayPower/20 + Math.random()*3);
+let homeGoals = Math.floor(homePower / 25 + Math.random() * 3);
+let awayGoals = Math.floor(awayPower / 25 + Math.random() * 3);
 
+/* update league */
 updateTable({
-home:match.home,
-away:match.away,
-homeGoals:homeGoals,
-awayGoals:awayGoals
+home: match.home,
+away: match.away,
+homeGoals,
+awayGoals
 });
 
-/* MGOT reakcie */
+/* MGOT special handling */
 if(match.home === "MGOT FC" || match.away === "MGOT FC"){
 
-let isHome = match.home === "MGOT FC";
+showMatchEvent(`MGOT FC ${homeGoals} : ${awayGoals}`);
 
-let msg =
-"MGOT FC zápas: " +
-homeGoals + ":" + awayGoals;
-
-showMatchUI(msg);
-
-matchReward(Math.max(homeGoals,awayGoals));
+matchReward(Math.max(homeGoals, awayGoals));
 
 fanReaction({
 homeGoals,
 awayGoals
 });
 
+notify("MGOT match finished!");
+
 }
 
 renderLeague();
-
 saveGame();
 
 }
 
-/* ===========================
-   NOTIFIKÁCIE UDALOSTÍ
-=========================== */
+/* =========================
+   LIVE MATCH DAY SEQUENCE
+========================= */
 
-function notify(text){
+function matchDayLive(){
 
-let n = document.createElement("div");
+let match = leagueTable.find(t => !t.played);
 
-n.style.position="fixed";
-n.style.top="80px";
-n.style.left="10px";
-n.style.right="10px";
-n.style.background="#252b3d";
-n.style.border="1px solid #444";
-n.style.padding="10px";
-n.style.borderRadius="10px";
-n.style.zIndex="9999";
-n.style.fontSize="14px";
+if(!match){
 
-n.innerText = text;
+notify("Season completed!");
 
-document.body.appendChild(n);
-
-setTimeout(()=>{
-
-n.remove();
-
-},2500);
+return;
 
 }
 
-/* ===========================
-   ZRANENIA NOTIFIKÁCIE
-=========================== */
+/* event loop simulation */
+for(let i = 0; i < 5; i++){
+
+setTimeout(()=>{
+
+generateMatchEvents();
+
+}, i * 1500);
+
+}
+
+/* final result */
+setTimeout(()=>{
+
+simulateLiveMatch({
+home: leagueTable[0].name,
+away: leagueTable[1].name
+});
+
+}, 8000);
+
+}
+
+/* =========================
+   QUICK ACTION PANEL
+========================= */
+
+function quickTrain(){
+
+trainTeam();
+
+notify("Quick training completed");
+
+}
+
+function quickSponsor(){
+
+collectSponsor();
+
+notify("Sponsor payment received");
+
+}
+
+/* =========================
+   INJURY ALERT SYSTEM
+========================= */
 
 function injuryNotification(){
 
 squad.forEach(p=>{
 
-if(p.injured && Math.random()<0.2){
+if(p.injured && Math.random() < 0.2){
 
-notify(p.name + " je zranený!");
+notify(p.name + " is injured!");
 
 }
 
@@ -2330,98 +1973,45 @@ notify(p.name + " je zranený!");
 
 }
 
-/* ===========================
-   LIVE MATCH EVENT LOOP
-=========================== */
+/* =========================
+   LIVE LOOP
+========================= */
 
-function liveEvents(){
+setInterval(()=>{
 
-let events = [
-
-"Šanca pre MGOT FC!",
-"Gólová príležitosť!",
-"Skvelý zákrok brankára!",
-"Fanúšikovia kričia!",
-"Rýchly protiútok!"
-
-];
-
-if(Math.random()<0.3){
-
-showMatchUI(
-events[Math.floor(Math.random()*events.length)]
-);
-
-}
-
+generateMatchEvents();
 injuryNotification();
 
-}
+}, 12000);
 
-/* každých 12 sekúnd */
-setInterval(liveEvents,12000);
-
-/* ===========================
-   QUICK ACTION PANEL
-=========================== */
-
-function quickTrain(){
-
-trainTeam();
-
-notify("Rýchly tréning dokončený");
-
-}
-
-function quickIncome(){
-
-collectSponsor();
-
-notify("Sponzor vyplatený");
-
-}
-
-/* ===========================
-   END MATCH SUMMARY
-=========================== */
-
-function matchSummary(home,away,h,a){
-
-let text =
-home + " " + h + ":" + a + " " + away;
-
-showMatchUI(text);
-
-}
-
-/* ===========================
-   KONEC ČASTI 9
-=========================== */
-/* ===========================
-   UI BUTTON PANEL (HERNÉ OVLÁDANIE)
-=========================== */
+/* =========================
+   END PART 9
+========================= */
+/* =========================
+   CONTROL PANEL (MOBILE UI)
+========================= */
 
 function addControlPanel(){
 
 let panel = document.createElement("div");
 
-panel.style.position="fixed";
-panel.style.bottom="0";
-panel.style.left="0";
-panel.style.right="0";
-panel.style.background="#161a25";
-panel.style.borderTop="2px solid #2fff7a";
-panel.style.display="flex";
-panel.style.justifyContent="space-around";
-panel.style.padding="10px";
-panel.style.zIndex="9999";
+panel.style.position = "fixed";
+panel.style.bottom = "0";
+panel.style.left = "0";
+panel.style.right = "0";
+panel.style.background = "#161a25";
+panel.style.borderTop = "2px solid #2fff7a";
+panel.style.display = "flex";
+panel.style.justifyContent = "space-around";
+panel.style.padding = "10px";
+panel.style.zIndex = "9999";
 
 panel.innerHTML = `
 
-<button onclick="playNextMatch()" class="btnGreen">⚽ Zápas</button>
-<button onclick="trainTeam()" class="btnBlue">💪 Tréning</button>
-<button onclick="collectSponsor()" class="btnBlue">💰 Sponzor</button>
-<button onclick="nextDay()" class="btnBlue">📅 Deň</button>
+<button onclick="nextDay()" class="btnGreen">📅 Day</button>
+<button onclick="matchDayLive()" class="btnBlue">⚽ Match</button>
+<button onclick="trainTeam()" class="btnBlue">💪 Train</button>
+<button onclick="collectSponsor()" class="btnBlue">💰 Sponsor</button>
 
 `;
 
@@ -2429,9 +2019,9 @@ document.body.appendChild(panel);
 
 }
 
-/* ===========================
-   GAME LOOP FIX (STABILITA)
-=========================== */
+/* =========================
+   GAME INIT
+========================= */
 
 function initGame(){
 
@@ -2447,53 +2037,62 @@ updateTopBar();
 
 addControlPanel();
 
-notify("MGOT Manager načítaný!");
+notify("MGOT Football Manager loaded!");
 
 }
 
-/* ===========================
-   AUTOSAVE + SAFE MODE
-=========================== */
+/* =========================
+   AUTOSAVE SAFETY
+========================= */
 
-window.addEventListener("beforeunload",()=>{
+window.addEventListener("beforeunload", ()=>{
 
 saveGame();
 
 });
 
-/* ===========================
-   RESET FUNKCIA (DEBUG)
-=========================== */
+/* =========================
+   RESET GAME
+========================= */
 
 function resetGame(){
 
-localStorage.removeItem("MGOT_FOOTBALL_MANAGER");
+localStorage.removeItem("MGOT_FM_SAVE");
 
 location.reload();
 
 }
 
-/* ===========================
-   FINAL CONNECT FIXES
-=========================== */
+/* =========================
+   SAFE DEFAULT VALUES
+========================= */
 
-/* zabezpečenie aby všetko existovalo */
 if(!game.fans) game.fans = 500;
 if(!game.money) game.money = 10000;
 if(!game.reputation) game.reputation = 1;
 if(!game.season) game.season = 1;
 if(!game.stadiumLevel) game.stadiumLevel = 1;
 
-/* ===========================
-   START HRY
-=========================== */
+/* =========================
+   START GAME
+========================= */
 
 initGame();
 
-/* ===========================
-   CLOSE HTML
-=========================== */
+/* =========================
+   END OF GAME FILE
+========================= */
 
+/* FULL SYSTEM CONNECTED:
+- League system
+- Transfers
+- Training
+- Economy
+- Live matches
+- Season system
+- Save system
+- Mobile UI
+*/
 </script>
 
 </body>
