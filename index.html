@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MGOT Football Manager</title>
+
+<style>
+
+:root{
+--bg:#0f1117;
+--panel:#1b2030;
+--card:#252b3d;
+--accent:#2fff7a;
+--text:#ffffff;
+--danger:#ff5555;
+--gold:#ffd54a;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:#161a25;
+padding:12px;
+border-bottom:2px solid var(--accent);
+}
+
+#clubName{
+font-size:24px;
+font-weight:bold;
+text-align:center;
+}
+
+#topBar{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:14px;
+}
+
+.money{
+color:var(--accent);
+font-weight:bold;
+}
+
+.screen{
+display:none;
+padding:15px;
+}
+
+.active{
+display:block;
+}
+
+.city-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+
+.location{
+background:var(--panel);
+border-radius:16px;
+padding:20px;
+text-align:center;
+border:2px solid #333;
+cursor:pointer;
+transition:.2s;
+}
+
+.location:active{
+transform:scale(.97);
+}
+
+.locationIcon{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.locationTitle{
+font-size:18px;
+font-weight:bold;
+}
+
+.card{
+background:var(--card);
+padding:15px;
+border-radius:14px;
+margin-bottom:12px;
+}
+
+.cardTitle{
+font-size:18px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+margin-top:8px;
+cursor:pointer;
+}
+
+.btnGreen{
+background:var(--accent);
+color:black;
+}
+
+.btnBlue{
+background:#3c7cff;
+color:white;
+}
+
+.btnBack{
+background:#444;
+color:white;
+}
+
+.statRow{
+display:flex;
+justify-content:space-between;
+padding:6px 0;
+}
+
+.leagueRow{
+display:flex;
+justify-content:space-between;
+padding:10px;
+margin-bottom:5px;
+background:#1f2535;
+border-radius:10px;
+}
+
+.playerRow{
+display:flex;
+justify-content:space-between;
+padding:10px;
+margin-bottom:5px;
+background:#1f2535;
+border-radius:10px;
+}
+
+@media(max-width:700px){
+
+.city-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div id="clubName">
+⚽ MGOT FC
+</div>
+
+<div id="topBar">
+
+<div>
+💰 <span id="moneyText">10000</span> MGOT
+</div>
+
+<div>
+👥 <span id="fansText">500</span>
+</div>
+
+<div>
+⭐ <span id="repText">1</span>
+</div>
+
+</div>
+
+</header>
+
+<!-- MESTO -->
+
+<div id="cityScreen" class="screen active">
+
+<h2>🌆 Mesto</h2>
+
+<br>
+
+<div class="city-grid">
+
+<div class="location" onclick="openScreen('stadiumScreen')">
+<div class="locationIcon">🏟️</div>
+<div class="locationTitle">Štadión</div>
+</div>
+
+<div class="location" onclick="openScreen('leagueScreen')">
+<div class="locationIcon">🏆</div>
+<div class="locationTitle">Liga</div>
+</div>
+
+<div class="location" onclick="openScreen('squadScreen')">
+<div class="locationIcon">👥</div>
+<div class="locationTitle">Tím</div>
+</div>
+
+<div class="location" onclick="openScreen('transferScreen')">
+<div class="locationIcon">🔄</div>
+<div class="locationTitle">Prestupy</div>
+</div>
+
+<div class="location" onclick="openScreen('trainingScreen')">
+<div class="locationIcon">💪</div>
+<div class="locationTitle">Tréning</div>
+</div>
+
+<div class="location" onclick="openScreen('academyScreen')">
+<div class="locationIcon">🎓</div>
+<div class="locationTitle">Akadémia</div>
+</div>
+
+<div class="location" onclick="openScreen('shopScreen')">
+<div class="locationIcon">🛒</div>
+<div class="locationTitle">Obchod</div>
+</div>
+
+<div class="location" onclick="openScreen('clubScreen')">
+<div class="locationIcon">📈</div>
+<div class="locationTitle">Klub</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- KLUB -->
+
+<div id="clubScreen" class="screen">
+
+<h2>📈 MGOT FC</h2>
+
+<br>
+
+<div class="card">
+
+<div class="cardTitle">
+Informácie o klube
+</div>
+
+<div class="statRow">
+<span>Názov</span>
+<span>MGOT FC</span>
+</div>
+
+<div class="statRow">
+<span>Sezóna</span>
+<span id="seasonText">1</span>
+</div>
+
+<div class="statRow">
+<span>Reputácia</span>
+<span id="clubRep">1</span>
+</div>
+
+<div class="statRow">
+<span>Fanúšikovia</span>
+<span id="clubFans">500</span>
+</div>
+
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- ŠTADIÓN -->
+
+<div id="stadiumScreen" class="screen">
+
+<h2>🏟️ Štadión</h2>
+
+<br>
+
+<div class="card">
+
+<div class="cardTitle">
+MGOT Arena
+</div>
+
+<div class="statRow">
+<span>Úroveň</span>
+<span id="stadiumLevelText">1</span>
+</div>
+
+<div class="statRow">
+<span>Kapacita</span>
+<span id="capacityText">1000</span>
+</div>
+
+</div>
+
+<div class="card">
+
+<button class="btnGreen"
+onclick="upgradeStadium()">
+Vylepšiť štadión
+</button>
+
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- LIGA -->
+
+<div id="leagueScreen" class="screen">
+
+<h2>🏆 Liga</h2>
+
+<br>
+
+<div id="leagueTable">
+
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- TÍM -->
+
+<div id="squadScreen" class="screen">
+
+<h2>👥 Súpiska</h2>
+
+<br>
+
+<div id="squadList">
+
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- PRESTUPY -->
+
+<div id="transferScreen" class="screen">
+
+<h2>🔄 Prestupy</h2>
+
+<br>
+
+<div class="card">
+Prestupový trh bude doplnený
+v Časti 2.
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- TRÉNING -->
+
+<div id="trainingScreen" class="screen">
+
+<h2>💪 Tréning</h2>
+
+<br>
+
+<div class="card">
+Tréningový systém bude
+doplnený v ďalších častiach.
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- AKADÉMIA -->
+
+<div id="academyScreen" class="screen">
+
+<h2>🎓 Akadémia</h2>
+
+<br>
+
+<div class="card">
+Akadémia bude doplnená
+v ďalších častiach.
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<!-- OBCHOD -->
+
+<div id="shopScreen" class="screen">
+
+<h2>🛒 Obchod</h2>
+
+<br>
+
+<div class="card">
+
+<button class="btnBlue"
+onclick="buyMoneyPack()">
+Kúpiť +1000 MGOT
+</button>
+
+</div>
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+</div>
+
+<script>
+
+let game = {
+
+clubName:"MGOT FC",
+
+money:10000,
+
+fans:500,
+
+reputation:1,
+
+season:1,
+
+stadiumLevel:1,
+
+capacity:1000
+
+};
+
+const leagueTeams = [
+"MGOT FC",
+"Solana United",
+"Crypto City",
+"Token FC",
+"Moon FC",
+"Diamond FC",
+"Whale FC",
+"Rocket FC",
+"Bull FC",
+"Blockchain FC"
+];
+
+const squad = [
+
+{
+name:"Peter Novak",
+pos:"GK",
+ovr:72,
+age:23
+},
+
+{
+name:"Martin Kovac",
+pos:"DEF",
+ovr:70,
+age:22
+},
+
+{
+name:"Lukas Hruby",
+pos:"DEF",
+ovr:71,
+age:24
+},
+
+{
+name:"Adam Toth",
+pos:"MID",
+ovr:74,
+age:21
+},
+
+{
+name:"Samuel Kral",
+pos:"ATT",
+ovr:76,
+age:20
+}
+];
+/* ===========================
+   ZÁKLADNÉ FUNKCIE HRY
+=========================== */
+
+function openScreen(id){
+
+document
+.querySelectorAll(".screen")
+.forEach(screen=>{
+
+screen.classList.remove("active");
+
+});
+
+document
+.getElementById(id)
+.classList.add("active");
+
+}
+
+function goCity(){
+
+openScreen("cityScreen");
+
+}
+
+function updateTopBar(){
+
+document
+.getElementById("moneyText")
+.innerText =
+game.money;
+
+document
+.getElementById("fansText")
+.innerText =
+game.fans;
+
+document
+.getElementById("repText")
+.innerText =
+game.reputation;
+
+document
+.getElementById("seasonText")
+.innerText =
+game.season;
+
+document
+.getElementById("clubRep")
+.innerText =
+game.reputation;
+
+document
+.getElementById("clubFans")
+.innerText =
+game.fans;
+
+document
+.getElementById("stadiumLevelText")
+.innerText =
+game.stadiumLevel;
+
+document
+.getElementById("capacityText")
+.innerText =
+game.capacity;
+
+}
+
+function saveGame(){
+
+localStorage.setItem(
+"MGOT_FOOTBALL_MANAGER",
+JSON.stringify(game)
+);
+
+}
+
+function loadGame(){
+
+const save =
+localStorage.getItem(
+"MGOT_FOOTBALL_MANAGER"
+);
+
+if(save){
+
+const loaded =
+JSON.parse(save);
+
+game = loaded;
+
+}
+
+updateTopBar();
+
+}
+
+setInterval(()=>{
+
+saveGame();
+
+},5000);
+
+/* ===========================
+   ŠTADIÓN
+=========================== */
+
+function upgradeStadium(){
+
+const cost =
+game.stadiumLevel * 2500;
+
+if(game.money < cost){
+
+alert(
+"Nemáš dostatok MGOT!"
+);
+
+return;
+
+}
+
+game.money -= cost;
+
+game.stadiumLevel++;
+
+game.capacity += 2500;
+
+game.fans += 250;
+
+updateTopBar();
+
+saveGame();
+
+alert(
+"Štadión bol vylepšený!"
+);
+
+}
+
+/* ===========================
+   OBCHOD
+=========================== */
+
+function buyMoneyPack(){
+
+game.money += 1000;
+
+updateTopBar();
+
+saveGame();
+
+alert(
+"+1000 MGOT pridaných."
+);
+
+}
+
+/* ===========================
+   TABUĽKA LIGY
+=========================== */
+
+let leagueData = [];
+
+function createLeague(){
+
+leagueData = [];
+
+leagueTeams.forEach(team=>{
+
+leagueData.push({
+
+name:team,
+
+points:0,
+
+played:0,
+
+wins:0,
+
+draws:0,
+
+losses:0,
+
+goalsFor:0,
+
+goalsAgainst:0
+
+});
+
+});
+
+renderLeague();
+
+}
+
+function renderLeague(){
+
+leagueData.sort((a,b)=>{
+
+return b.points-a.points;
+
+});
+
+let html = "";
+
+leagueData.forEach((club,index)=>{
+
+html += `
+
+<div class="leagueRow">
+
+<div>
+${index+1}.
+${club.name}
+</div>
+
+<div>
+${club.points} b
+</div>
+
+</div>
+
+`;
+
+});
+
+document
+.getElementById("leagueTable")
+.innerHTML = html;
+
+}
+
+/* ===========================
+   SÚPISKA
+=========================== */
+
+function renderSquad(){
+
+let html = "";
+
+squad.forEach(player=>{
+
+html += `
+
+<div class="playerRow">
+
+<div>
+
+<b>${player.name}</b>
+
+<br>
+
+${player.pos}
+
+</div>
+
+<div>
+
+OVR ${player.ovr}
+
+<br>
+
+${player.age}r
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document
+.getElementById("squadList")
+.innerHTML = html;
+
+}
+
+/* ===========================
+   FINANCIE KLUBU
+=========================== */
+
+function addIncome(amount){
+
+game.money += amount;
+
+updateTopBar();
+
+saveGame();
+
+}
+
+function removeMoney(amount){
+
+if(game.money < amount){
+
+return false;
+
+}
+
+game.money -= amount;
+
+updateTopBar();
+
+saveGame();
+
+return true;
+
+}
+
+/* ===========================
+   SPONZORI
+=========================== */
+
+let sponsors = [
+
+{
+name:"MGOT Labs",
+amount:500
+},
+
+{
+name:"Solana Energy",
+amount:750
+},
+
+{
+name:"Crypto Vision",
+amount:1000
+}
+
+];
+
+function collectSponsorMoney(){
+
+const sponsor =
+sponsors[
+Math.floor(
+Math.random()*sponsors.length
+)
+];
+
+game.money += sponsor.amount;
+
+updateTopBar();
+
+saveGame();
+
+alert(
+sponsor.name +
+" zaplatil " +
+sponsor.amount +
+" MGOT"
+);
+
+}
+
+/* ===========================
+   PROFIL KLUBU
+=========================== */
+
+function increaseReputation(){
+
+game.reputation++;
+
+updateTopBar();
+
+saveGame();
+
+}
+
+function increaseFans(amount){
+
+game.fans += amount;
+
+updateTopBar();
+
+saveGame();
+
+}
+
+function nextSeason(){
+
+game.season++;
+
+increaseFans(500);
+
+increaseReputation();
+
+updateTopBar();
+
+saveGame();
+
+}
+
+/* ===========================
+   GENEROVANIE 30 HRÁČOV
+=========================== */
+
+const firstNames = [
+
+"Peter",
+"Martin",
+"Lukas",
+"Samuel",
+"Adam",
+"Tomas",
+"Marek",
+"Filip",
+"David",
+"Jakub"
+
+];
+
+const lastNames = [
+
+"Novak",
+"Kovac",
+"Toth",
+"Horvat",
+"Kral",
+"Varga",
+"Urban",
+"Molnar",
+"Balaz",
+"Polak"
+
+];
+
+for(let i=0;i<25;i++){
+
+const posList = [
+"GK",
+"DEF",
+"MID",
+"ATT"
+];
+
+squad.push({
+
+name:
+firstNames[
+Math.floor(
+Math.random()*firstNames.length
+)
+]
++" "+
+lastNames[
+Math.floor(
+Math.random()*lastNames.length
+)
+],
+
+pos:
+posList[
+Math.floor(
+Math.random()*posList.length
+)
+],
+
+ovr:
+60+
+Math.floor(
+Math.random()*20
+),
+
+age:
+17+
+Math.floor(
+Math.random()*18
+)
+
+});
+
+  }
+  /* ===========================
+   PRESTUPOVÝ TRH
+=========================== */
+
+let transferMarket = [];
+
+function generateTransferMarket(){
+
+transferMarket = [];
+
+for(let i=0;i<12;i++){
+
+const posList = ["GK","DEF","MID","ATT"];
+
+const firstNames = ["Alex","John","Mike","Leo","Ivan","Marco","Sam","Tom","David","Luka"];
+
+const lastNames = ["Stone","White","Black","Green","Kovac","Novak","Silva","Costa","Muller","Rossi"];
+
+let ovr =
+55 + Math.floor(Math.random()*30);
+
+let price =
+ovr * 120;
+
+transferMarket.push({
+
+id:i,
+
+name:
+firstNames[Math.floor(Math.random()*firstNames.length)] +
+" " +
+lastNames[Math.floor(Math.random()*lastNames.length)],
+
+pos:posList[Math.floor(Math.random()*posList.length)],
+
+ovr:ovr,
+
+age:17 + Math.floor(Math.random()*20),
+
+price:price
+
+});
+
+}
+
+renderTransferMarket();
+
+}
+
+/* ===========================
+   RENDER TRH
+=========================== */
+
+function renderTransferMarket(){
+
+let html = "";
+
+transferMarket.forEach(player=>{
+
+html += `
+
+<div class="card">
+
+<b>${player.name}</b><br>
+Pozícia: ${player.pos}<br>
+OVR: ${player.ovr}<br>
+Vek: ${player.age}<br>
+Cena: ${player.price} MGOT
+
+<br><br>
+
+<button class="btnGreen"
+onclick="buyPlayer(${player.id})">
+
+Kúpiť
+
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("transferScreen").innerHTML = `
+
+<h2>🔄 Prestupový trh</h2>
+
+<br>
+
+${html}
+
+<button class="btnBack"
+onclick="goCity()">
+Späť
+</button>
+
+`;
+
+}
+
+/* ===========================
+   NÁKUP HRÁČA
+=========================== */
+
+function buyPlayer(id){
+
+let player =
+transferMarket.find(p=>p.id===id);
+
+if(!player) return;
+
+if(game.money < player.price){
+
+alert("Nemáš dostatok MGOT!");
+
+return;
+
+}
+
+game.money -= player.price;
+
+squad.push({
+
+name:player.name,
+pos:player.pos,
+ovr:player.ovr,
+age:player.age
+
+});
+
+transferMarket =
+transferMarket.filter(p=>p.id!==id);
+
+updateTopBar();
+
+saveGame();
+
+renderSquad();
+
+renderTransferMarket();
+
+alert("Kúpil si hráča!");
+
+}
+
+/* ===========================
+   PREDPREDAJ HRÁČOV (SIMPL)
+=========================== */
+
+function sellPlayer(index){
+
+let player = squad[index];
+
+if(!player) return;
+
+let price = player.ovr * 80;
+
+game.money += price;
+
+squad.splice(index,1);
+
+updateTopBar();
+
+saveGame();
+
+renderSquad();
+
+alert("Predal si hráča za " + price + " MGOT");
+
+}
+
+/* ===========================
+   INIT SYSTEM
+=========================== */
+
+generateTransferMarket();
+renderSquad();
+createLeague();
+loadGame();
+/* ===========================
+   SIMULÁCIA ZÁPASOV
+=========================== */
+
+function simulateMatch(teamA, teamB){
+
+let a =
+Math.floor(Math.random()*10) +
+Math.floor(getTeamStrength(teamA)/10);
+
+let b =
+Math.floor(Math.random()*10) +
+Math.floor(getTeamStrength(teamB)/10);
+
+return {
+home:teamA,
+away:teamB,
+homeGoals:a,
+awayGoals:b
+};
+
+}
+
+/* ===========================
+   SILA TÍMU
+=========================== */
+
+function getTeamStrength(teamName){
+
+if(teamName === "MGOT FC"){
+
+let total = 0;
+
+squad.forEach(p=>{
+total += p.ovr;
+});
+
+return total / squad.length;
+
+}
+
+return 65 + Math.random()*10;
+
+}
+
+/* ===========================
+   GENEROVANIE KOLA
+=========================== */
+
+let currentRound = 0;
+
+function playRound(){
+
+let results = [];
+
+for(let i=0;i<leagueData.length;i+=2){
+
+let match = simulateMatch(
+leagueData[i].name,
+leagueData[i+1].name
+);
+
+results.push(match);
+
+updateTable(match);
+
+}
+
+currentRound++;
+
+renderLeague();
+
+saveGame();
+
+alert("Kolo odohrané!");
+
+}
+
+/* ===========================
+   UPDATE TABUĽKY
+=========================== */
+
+function updateTable(match){
+
+let home = leagueData.find(t=>t.name===match.home);
+let away = leagueData.find(t=>t.name===match.away);
+
+home.played++;
+away.played++;
+
+home.goalsFor += match.homeGoals;
+home.goalsAgainst += match.awayGoals;
+
+away.goalsFor += match.awayGoals;
+away.goalsAgainst += match.homeGoals;
+
+if(match.homeGoals > match.awayGoals){
+
+home.wins++;
+away.losses++;
+
+home.points += 3;
+
+}else if(match.homeGoals < match.awayGoals){
+
+away.wins++;
+home.losses++;
+
+away.points += 3;
+
+}else{
+
+home.draws++;
+away.draws++;
+
+home.points += 1;
+away.points += 1;
+
+}
+
+}
+
+/* ===========================
+   AUTOMATICKÉ KOLÁ
+=========================== */
+
+function autoSeason(){
+
+if(currentRound >= 18){
+
+alert("Sezóna skončila!");
+
+nextSeason();
+
+resetLeague();
+
+return;
+
+}
+
+playRound();
+
+}
+
+/* ===========================
+   RESET LIGY
+=========================== */
+
+function resetLeague(){
+
+leagueData.forEach(team=>{
+
+team.points = 0;
+team.played = 0;
+team.wins = 0;
+team.draws = 0;
+team.losses = 0;
+team.goalsFor = 0;
+team.goalsAgainst = 0;
+
+});
+
+currentRound = 0;
+
+renderLeague();
+
+}
+
+/* ===========================
+   MGOT ZÁPAS KLUBU
+=========================== */
+
+function playMGOTMatch(){
+
+let opponents =
+leagueData.filter(t=>t.name !== "MGOT FC");
+
+let enemy =
+opponents[
+Math.floor(Math.random()*opponents.length)
+];
+
+let match = simulateMatch("MGOT FC", enemy.name);
+
+if(match.home === "MGOT FC"){
+
+updateTable(match);
+
+}else{
+
+updateTable({
+home:enemy.name,
+away:"MGOT FC",
+homeGoals:match.homeGoals,
+awayGoals:match.awayGoals
+});
+
+}
+
+let msg =
+"MGOT FC " +
+match.homeGoals +
+" : " +
+match.awayGoals +
+" " +
+enemy.name;
+
+alert(msg);
+
+renderLeague();
+
+saveGame();
+
+  }
+/* ===========================
+   HRÁČSKA FORMA A ÚNAVA
+=========================== */
+
+function addForm(){
+
+squad.forEach(p=>{
+
+p.form =
+(p.form || 70) +
+Math.floor(Math.random()*5) - 2;
+
+if(p.form > 100) p.form = 100;
+if(p.form < 40) p.form = 40;
+
+p.stamina =
+(p.stamina || 100) -
+Math.floor(Math.random()*10);
+
+if(p.stamina < 50){
+
+p.ovr -= 1;
+
+}
+
+});
+
+}
+
+/* ===========================
+   TRÉNING HRÁČOV
+=========================== */
+
+function trainPlayer(index){
+
+let player = squad[index];
+
+if(!player) return;
+
+if(game.money < 200){
+
+alert("Nedostatok MGOT!");
+
+return;
+
+}
+
+game.money -= 200;
+
+player.ovr += Math.random() < 0.5 ? 1 : 0;
+
+player.form = Math.min(100,(player.form||70)+5);
+
+player.stamina = Math.max(60,(player.stamina||100)-10);
+
+updateTopBar();
+
+saveGame();
+
+renderSquad();
+
+alert(player.name + " sa zlepšil!");
+
+}
+
+/* ===========================
+   AUTOMATICKÝ TRÉNING TÍMU
+=========================== */
+
+function trainTeam(){
+
+if(game.money < 800){
+
+alert("Nedostatok MGOT!");
+
+return;
+
+}
+
+game.money -= 800;
+
+squad.forEach(p=>{
+
+if(Math.random() > 0.5){
+
+p.ovr += 1;
+
+}
+
+p.form = Math.min(100,(p.form||70)+3);
+
+p.stamina = Math.max(60,(p.stamina||100)-5);
+
+});
+
+updateTopBar();
+
+saveGame();
+
+renderSquad();
+
+alert("Tím absolvoval tréning!");
+
+}
+
+/* ===========================
+   REGENERÁCIA HRÁČOV
+=========================== */
+
+function recoverTeam(){
+
+squad.forEach(p=>{
+
+p.stamina = 100;
+
+p.form = Math.min(100,(p.form||70)+2);
+
+});
+
+saveGame();
+
+alert("Tím sa zotavil!");
+
+}
+
+/* ===========================
+   VPLYV FORMY NA SILU
+=========================== */
+
+function getPlayerPower(player){
+
+let form = player.form || 70;
+
+let stamina = player.stamina || 100;
+
+return player.ovr * (form/100) * (stamina/100);
+
+}
+
+/* ===========================
+   VYLEPŠENÝ VÝPOČET SILY TÍMU
+=========================== */
+
+function getTeamStrength(teamName){
+
+if(teamName === "MGOT FC"){
+
+let total = 0;
+
+squad.forEach(p=>{
+
+total += getPlayerPower(p);
+
+});
+
+return total / squad.length;
+
+}
+
+return 65 + Math.random()*12;
+
+}
+
+/* ===========================
+   KONEC TRÉNINGOVEJ LOGIKY
+=========================== */
+
+addForm();
+/* ===========================
+   ZRANENIA HRÁČOV
+=========================== */
+
+function injuryCheck(){
+
+squad.forEach(p=>{
+
+if(Math.random() < 0.03){
+
+p.injured = true;
+p.injuryDays = 1 + Math.floor(Math.random()*5);
+
+}
+
+if(p.injured){
+
+p.injuryDays--;
+
+if(p.injuryDays <= 0){
+
+p.injured = false;
+
+}
+
+}
+
+});
+
+}
+
+/* ===========================
+   ROTÁCIA ZOSTAVY
+=========================== */
+
+function getActiveSquad(){
+
+let active = squad.filter(p=>!p.injured);
+
+if(active.length < 3){
+
+return squad;
+
+}
+
+return active;
+
+}
+
+/* ===========================
+   MATCH SIMULÁCIA (VYLEPŠENÁ)
+=========================== */
+
+function simulateDetailedMatch(){
+
+injuryCheck();
+
+let activePlayers = getActiveSquad();
+
+let mgotPower = 0;
+
+activePlayers.forEach(p=>{
+
+mgotPower += getPlayerPower(p);
+
+});
+
+mgotPower = mgotPower / activePlayers.length;
+
+let opponents =
+leagueData.filter(t=>t.name !== "MGOT FC");
+
+let enemy =
+opponents[Math.floor(Math.random()*opponents.length)];
+
+let enemyPower =
+60 + Math.random()*15;
+
+let mgotGoals =
+Math.floor(mgotPower / 20) + Math.floor(Math.random()*3);
+
+let enemyGoals =
+Math.floor(enemyPower / 20) + Math.floor(Math.random()*3);
+
+/* update league */
+
+updateTable({
+home:"MGOT FC",
+away:enemy.name,
+homeGoals:mgotGoals,
+awayGoals:enemyGoals
+});
+
+renderLeague();
+
+let result =
+"MGOT FC " +
+mgotGoals +
+" : " +
+enemyGoals +
+" " +
+enemy.name;
+
+alert(result);
+
+saveGame();
+
+}
+
+/* ===========================
+   HRÁČSKY MATCH STATUS
+=========================== */
+
+function getInjuryText(player){
+
+if(!player.injured) return "";
+
+return "❌ zranený ("+player.injuryDays+" dní)";
+
+}
+
+/* ===========================
+   ROZŠÍRENÉ ZOBRAZENIE SÚPISKY
+=========================== */
+
+function renderSquad(){
+
+let html = "";
+
+squad.forEach((player,index)=>{
+
+html += `
+
+<div class="playerRow">
+
+<div>
+
+<b>${player.name}</b>
+<br>
+${player.pos}
+<br>
+${getInjuryText(player)}
+
+</div>
+
+<div>
+
+OVR ${player.ovr}
+<br>
+Form ${player.form || 70}
+<br>
+Stamina ${player.stamina || 100}
+
+</div>
+
+<div>
+
+<button class="btnGreen"
+onclick="trainPlayer(${index})">
+Trénovať
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("squadList").innerHTML = html;
+
+}
+
+/* ===========================
+   AUTOMATICKÉ FUNKCIE SEZÓNY
+=========================== */
+
+function seasonTick(){
+
+addForm();
+injuryCheck();
+
+saveGame();
+
+}
+
+/* každých 10 sekúnd simulujeme život tímu */
+setInterval(seasonTick,10000);
+
+/* ===========================
+   KONEC ČASTI 6
+=========================== */
+/* ===========================
+   KALENDÁR SEZÓNY
+=========================== */
+
+let seasonDay = 1;
+
+let fixtures = [];
+
+function generateFixtures(){
+
+fixtures = [];
+
+for(let i=0;i<leagueData.length;i++){
+
+for(let j=i+1;j<leagueData.length;j++){
+
+fixtures.push({
+home:leagueData[i].name,
+away:leagueData[j].name,
+played:false
+});
+
+}
+
+}
+
+shuffle(fixtures);
+
+}
+
+function shuffle(array){
+
+for(let i=array.length-1;i>0;i--){
+
+let j = Math.floor(Math.random()*(i+1));
+
+[array[i],array[j]] = [array[j],array[i]];
+
+}
+
+}
+
+/* ===========================
+   DENNÝ POSUN
+=========================== */
+
+function nextDay(){
+
+seasonDay++;
+
+simulateDay();
+
+saveGame();
+
+}
+
+/* ===========================
+   SIMULÁCIA DŇA
+=========================== */
+
+function simulateDay(){
+
+let match = fixtures.find(f=>!f.played);
+
+if(!match){
+
+alert("Sezóna skončila!");
+
+nextSeason();
+
+resetLeague();
+
+return;
+
+}
+
+match.played = true;
+
+/* MGOT zápas */
+if(match.home === "MGOT FC" || match.away === "MGOT FC"){
+
+let mgotHome = match.home === "MGOT FC";
+
+let power = getTeamStrength("MGOT FC");
+
+let enemy =
+getTeamStrength(
+mgotHome ? match.away : match.home
+);
+
+let mg = Math.floor(power/20 + Math.random()*3);
+
+let en = Math.floor(enemy/20 + Math.random()*3);
+
+updateTable({
+home:match.home,
+away:match.away,
+homeGoals:mgotHome ? mg : en,
+awayGoals:mgotHome ? en : mg
+});
+
+renderLeague();
+
+alert("MGOT zápas odohraný!");
+
+}else{
+
+/* AI zápas */
+let homePower = 65 + Math.random()*10;
+let awayPower = 65 + Math.random()*10;
+
+updateTable({
+home:match.home,
+away:match.away,
+homeGoals:Math.floor(homePower/20 + Math.random()*2),
+awayGoals:Math.floor(awayPower/20 + Math.random()*2)
+});
+
+}
+
+renderLeague();
+
+}
+
+/* ===========================
+   AUTOMATICKÝ MATCH DAY
+=========================== */
+
+function matchDay(){
+
+for(let i=0;i<3;i++){
+
+simulateDay();
+
+}
+
+}
+
+/* ===========================
+   SEZÓNA RESET
+=========================== */
+
+function nextSeason(){
+
+game.season++;
+
+seasonDay = 1;
+
+generateFixtures();
+
+increaseFans(1000);
+
+increaseReputation();
+
+alert("Nová sezóna začala!");
+
+}
+
+/* ===========================
+   LIGA UPDATE BONUS
+=========================== */
+
+function leagueBonus(){
+
+let mgot = leagueData.find(t=>t.name==="MGOT FC");
+
+if(mgot){
+
+if(mgot.points > 10){
+
+game.money += 500;
+
+}
+
+if(mgot.points > 20){
+
+game.fans += 300;
+
+}
+
+}
+
+updateTopBar();
+
+}
+
+/* každých 15 sekúnd kontrola sezóny */
+setInterval(()=>{
+
+leagueBonus();
+
+},15000);
+
+/* ===========================
+   INIT FIXTURES
+=========================== */
+
+generateFixtures();
+
+/* ===========================
+   KONEC ČASTI 7
+=========================== */
+/* ===========================
+   EKONOMIKA KLUBU
+=========================== */
+
+let stadiumIncome = 50;
+
+/* ===========================
+   VYLEPŠENIE ŠTADIÓNU (ROZŠÍRENÉ)
+=========================== */
+
+function upgradeStadium(){
+
+let cost =
+game.stadiumLevel * 3000;
+
+if(game.money < cost){
+
+alert("Nedostatok MGOT!");
+
+return;
+
+}
+
+game.money -= cost;
+
+game.stadiumLevel++;
+
+game.capacity += 2000;
+
+stadiumIncome += 50;
+
+increaseFans(300);
+
+increaseReputation();
+
+updateTopBar();
+
+saveGame();
+
+alert("Štadión vylepšený!");
+
+}
+
+/* ===========================
+   PRÍJMY Z DŇA
+=========================== */
+
+function dailyIncome(){
+
+let income = stadiumIncome * game.stadiumLevel;
+
+game.money += income;
+
+updateTopBar();
+
+saveGame();
+
+}
+
+/* každých 20 sekúnd príjem */
+setInterval(()=>{
+
+dailyIncome();
+
+},20000);
+
+/* ===========================
+   FANÚŠIKOVIA + DYNAMIKA
+=========================== */
+
+function fanReaction(matchResult){
+
+let diff = matchResult.homeGoals - matchResult.awayGoals;
+
+if(diff > 0){
+
+game.fans += 50 + diff*10;
+
+}else if(diff < 0){
+
+game.fans -= 30;
+
+if(game.fans < 0) game.fans = 0;
+
+}else{
+
+game.fans += 10;
+
+}
+
+updateTopBar();
+
+}
+
+/* ===========================
+   SPONZORI
+=========================== */
+
+let sponsorList = [
+
+{
+name:"MGOT Energy",
+base:500
+},
+
+{
+name:"CryptoX",
+base:800
+},
+
+{
+name:"Blockchain Corp",
+base:1200
+},
+
+{
+name:"Solana Partners",
+base:1500
+}
+
+];
+
+function collectSponsor(){
+
+let s =
+sponsorList[
+Math.floor(Math.random()*sponsorList.length)
+];
+
+let amount =
+s.base + Math.floor(Math.random()*300);
+
+game.money += amount;
+
+updateTopBar();
+
+saveGame();
+
+alert(s.name + " zaplatil " + amount + " MGOT");
+
+}
+
+/* ===========================
+   BONUS ZA REPUTÁCIU
+=========================== */
+
+function reputationBonus(){
+
+if(game.reputation >= 5){
+
+game.money += 200;
+
+}
+
+if(game.reputation >= 10){
+
+game.fans += 100;
+
+}
+
+updateTopBar();
+
+}
+
+/* každých 25 sekúnd */
+setInterval(()=>{
+
+reputationBonus();
+
+},25000);
+
+/* ===========================
+   MATCH BONUS SYSTEM
+=========================== */
+
+function matchReward(goals){
+
+game.money += goals * 150;
+
+game.fans += goals * 20;
+
+updateTopBar();
+
+saveGame();
+
+}
+
+/* ===========================
+   ECONOMY LOOP
+=========================== */
+
+function economyTick(){
+
+dailyIncome();
+
+reputationBonus();
+
+saveGame();
+
+}
+
+setInterval(economyTick,30000);
+
+/* ===========================
+   KONEC ČASTI 8
+=========================== */
+/* ===========================
+   MATCH UI (ZÁPASOVÝ DEŇ)
+=========================== */
+
+function showMatchUI(text){
+
+let box = document.createElement("div");
+
+box.style.position="fixed";
+box.style.bottom="20px";
+box.style.left="10px";
+box.style.right="10px";
+box.style.background="#1b2030";
+box.style.border="2px solid #2fff7a";
+box.style.padding="15px";
+box.style.borderRadius="12px";
+box.style.zIndex="9999";
+box.style.textAlign="center";
+box.style.fontWeight="bold";
+
+box.innerText = text;
+
+document.body.appendChild(box);
+
+setTimeout(()=>{
+
+box.remove();
+
+},3000);
+
+}
+
+/* ===========================
+   HRANIE ZÁPASU (MANUÁLNE)
+=========================== */
+
+function playNextMatch(){
+
+if(fixtures.length === 0){
+
+alert("Sezóna skončila!");
+
+nextSeason();
+
+return;
+
+}
+
+let match =
+fixtures.find(f=>!f.played);
+
+if(!match){
+
+alert("Všetky zápasy odohrané!");
+
+return;
+
+}
+
+simulateMatchDay(match);
+
+}
+
+/* ===========================
+   SIMULÁCIA JEDNÉHO ZÁPASU
+=========================== */
+
+function simulateMatchDay(match){
+
+match.played = true;
+
+let homePower = getTeamStrength(match.home);
+let awayPower = getTeamStrength(match.away);
+
+let homeGoals = Math.floor(homePower/20 + Math.random()*3);
+let awayGoals = Math.floor(awayPower/20 + Math.random()*3);
+
+updateTable({
+home:match.home,
+away:match.away,
+homeGoals:homeGoals,
+awayGoals:awayGoals
+});
+
+/* MGOT reakcie */
+if(match.home === "MGOT FC" || match.away === "MGOT FC"){
+
+let isHome = match.home === "MGOT FC";
+
+let msg =
+"MGOT FC zápas: " +
+homeGoals + ":" + awayGoals;
+
+showMatchUI(msg);
+
+matchReward(Math.max(homeGoals,awayGoals));
+
+fanReaction({
+homeGoals,
+awayGoals
+});
+
+}
+
+renderLeague();
+
+saveGame();
+
+}
+
+/* ===========================
+   NOTIFIKÁCIE UDALOSTÍ
+=========================== */
+
+function notify(text){
+
+let n = document.createElement("div");
+
+n.style.position="fixed";
+n.style.top="80px";
+n.style.left="10px";
+n.style.right="10px";
+n.style.background="#252b3d";
+n.style.border="1px solid #444";
+n.style.padding="10px";
+n.style.borderRadius="10px";
+n.style.zIndex="9999";
+n.style.fontSize="14px";
+
+n.innerText = text;
+
+document.body.appendChild(n);
+
+setTimeout(()=>{
+
+n.remove();
+
+},2500);
+
+}
+
+/* ===========================
+   ZRANENIA NOTIFIKÁCIE
+=========================== */
+
+function injuryNotification(){
+
+squad.forEach(p=>{
+
+if(p.injured && Math.random()<0.2){
+
+notify(p.name + " je zranený!");
+
+}
+
+});
+
+}
+
+/* ===========================
+   LIVE MATCH EVENT LOOP
+=========================== */
+
+function liveEvents(){
+
+let events = [
+
+"Šanca pre MGOT FC!",
+"Gólová príležitosť!",
+"Skvelý zákrok brankára!",
+"Fanúšikovia kričia!",
+"Rýchly protiútok!"
+
+];
+
+if(Math.random()<0.3){
+
+showMatchUI(
+events[Math.floor(Math.random()*events.length)]
+);
+
+}
+
+injuryNotification();
+
+}
+
+/* každých 12 sekúnd */
+setInterval(liveEvents,12000);
+
+/* ===========================
+   QUICK ACTION PANEL
+=========================== */
+
+function quickTrain(){
+
+trainTeam();
+
+notify("Rýchly tréning dokončený");
+
+}
+
+function quickIncome(){
+
+collectSponsor();
+
+notify("Sponzor vyplatený");
+
+}
+
+/* ===========================
+   END MATCH SUMMARY
+=========================== */
+
+function matchSummary(home,away,h,a){
+
+let text =
+home + " " + h + ":" + a + " " + away;
+
+showMatchUI(text);
+
+}
+
+/* ===========================
+   KONEC ČASTI 9
+=========================== */
+/* ===========================
+   UI BUTTON PANEL (HERNÉ OVLÁDANIE)
+=========================== */
+
+function addControlPanel(){
+
+let panel = document.createElement("div");
+
+panel.style.position="fixed";
+panel.style.bottom="0";
+panel.style.left="0";
+panel.style.right="0";
+panel.style.background="#161a25";
+panel.style.borderTop="2px solid #2fff7a";
+panel.style.display="flex";
+panel.style.justifyContent="space-around";
+panel.style.padding="10px";
+panel.style.zIndex="9999";
+
+panel.innerHTML = `
+
+<button onclick="playNextMatch()" class="btnGreen">⚽ Zápas</button>
+<button onclick="trainTeam()" class="btnBlue">💪 Tréning</button>
+<button onclick="collectSponsor()" class="btnBlue">💰 Sponzor</button>
+<button onclick="nextDay()" class="btnBlue">📅 Deň</button>
+
+`;
+
+document.body.appendChild(panel);
+
+}
+
+/* ===========================
+   GAME LOOP FIX (STABILITA)
+=========================== */
+
+function initGame(){
+
+loadGame();
+
+createLeague();
+
+renderSquad();
+
+generateFixtures();
+
+updateTopBar();
+
+addControlPanel();
+
+notify("MGOT Manager načítaný!");
+
+}
+
+/* ===========================
+   AUTOSAVE + SAFE MODE
+=========================== */
+
+window.addEventListener("beforeunload",()=>{
+
+saveGame();
+
+});
+
+/* ===========================
+   RESET FUNKCIA (DEBUG)
+=========================== */
+
+function resetGame(){
+
+localStorage.removeItem("MGOT_FOOTBALL_MANAGER");
+
+location.reload();
+
+}
+
+/* ===========================
+   FINAL CONNECT FIXES
+=========================== */
+
+/* zabezpečenie aby všetko existovalo */
+if(!game.fans) game.fans = 500;
+if(!game.money) game.money = 10000;
+if(!game.reputation) game.reputation = 1;
+if(!game.season) game.season = 1;
+if(!game.stadiumLevel) game.stadiumLevel = 1;
+
+/* ===========================
+   START HRY
+=========================== */
+
+initGame();
+
+/* ===========================
+   CLOSE HTML
+=========================== */
+
+</script>
+
+</body>
+</html>
